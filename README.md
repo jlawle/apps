@@ -55,16 +55,13 @@ End run/simulation by clicking "stop" square button on the top bar, far left
 > it will automatically build for the watch app target.
 
 ## App Hierarchy:
-Project Name:
-- DataCollector
-
-Targets:
-- WatchKit App
-- WatchKit Extension
-
-> NOTE: Will possibly add another top level "Workspace" that will contain macOS project
-and its corresponding targets.
-
+Workspace: Data Logger
+- Project: watchLog
+  * Target: watchLog WatchKit App
+  * Target: watchLog WatchKit Extension
+- Project: dataFetch
+  * Target: TBD
+
 ## Dataflow Options:
 - *Independent watchOS app -> cloudKit server -> macOS app
 - watchOS app -> companion IOS app -> dropBox Server -> macOS app
