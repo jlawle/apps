@@ -90,6 +90,7 @@ and its corresponding targets.
  - [File System Programming Guide] | Apple Developers
  - [Intro to NSFileManager] | Ray Wenderlich
  - [CloudKit Development] | Apple Developers
+ - [iCloud Design Guide] | Apple Developers
 
 
 
@@ -100,6 +101,7 @@ and its corresponding targets.
 [Intro to NSFileManager]: <https://www.youtube.com/watch?v=eC7_cddT6wM>
 [CLoudKit Development]: <https://developer.apple.com/icloud/cloudkit/designing/>
 [CloudKit Console]: <https://icloud.developer.apple.com/>
+[iCloud Design Guide]: <https://developer.apple.com/library/archive/documentation/General/Conceptual/iCloudDesignGuide/Chapters/DesigningForDocumentsIniCloud.html#//apple_ref/doc/uid/TP40012094-CH2>
 
 
 
