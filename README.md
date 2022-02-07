@@ -1,9 +1,9 @@
 # BiteTracker - SimpleDataCollector
 A group of watchOS and macOS apps to collect motion data and record instances
-of eating and drinking throughout the day. SimpleDataCollector is an independent 
-watchOS app that collects raw motion data from the apple watch. This data is then 
-exported to a macOS app for viewing via cloudKit. The watch app will track x,y,z 
-acceleration, gyroscope motion, and user-driven timestamps. 
+of eating and drinking throughout the day. SimpleDataCollector is an independent
+watchOS app that collects raw motion data from the apple watch. This data is then
+exported to a macOS app for viewing via cloudKit. The watch app will track x,y,z
+acceleration, gyroscope motion, and user-driven timestamps.
 
 ## Features
 - Record motion data in background on independent watchOS app
@@ -12,7 +12,7 @@ acceleration, gyroscope motion, and user-driven timestamps.
 - Create macOS app to gather and sort data from cloud
 
 > This is a Clemson ECE research project led by [Dr. Adam Hoover] as part of his
-> Eating Detection research. 
+> Eating Detection research.
 > Coded by John Lawler (Graduate CpE) and Cameron Burroughs (Undergraduate CpE).
 > More information can be found here: http://cecas.clemson.edu/~ahoover/eat-detect/
 
@@ -33,8 +33,8 @@ BiteTracker uses mostly apple technologies to record, export, and import data.
 6. Language: Objective-C (or Swift)
 
 ## Compilation/ Simulation
-To build project: 
-- Product -> Build For -> Testing 
+To build project:
+- Product -> Build For -> Testing
 - Shortcut: shift + ⌘ + U
 
 To build & run:
@@ -52,15 +52,15 @@ End run/simulation by clicking "stop" square button on the top bar, far left
 > NOTE: no need to select target for build on idenpendent watchOS app
 > it will automatically build for the watch app target.
 
-## App Hierarchy: 
-Project Name: 
+## App Hierarchy:
+Project Name:
 - DataCollector
 
 Targets:
 - WatchKit App
 - WatchKit Extension
 
-> NOTE: Will possibly add another top level "Workspace" that will contain macOS project 
+> NOTE: Will possibly add another top level "Workspace" that will contain macOS project
 and its corresponding targets.
 
 ## Dataflow Options:
@@ -69,12 +69,15 @@ and its corresponding targets.
 - watchOS app -> companion IOS app -> download container to computer -> macOS app
 
 *We are currently proceeding with this dataflow path
+
+### File System Diagrams
+![The App Sandbox](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/art/ios_app_layout_2x.png)
 
 ## CloudKit Research
-- Access to CloudKit data based on Apple ID, do not need in-app sign in 
+- Access to CloudKit data based on Apple ID, do not need in-app sign in
 - Uses URLSession, makes request over Wifi or cellular connection
 - [CloudKit Console] to accesss cloud container
-- [CloudKit Development] (container structure, environments, permissions, connectivity etc.) 
+- [CloudKit Development] (container structure, environments, permissions, connectivity etc.)
 
 ## Adding  CLoudKit Capabilities
 - In XCode Project Navigator, select project and project target
@@ -82,7 +85,7 @@ and its corresponding targets.
 - Click "+ Capability" -> "iCloud", verify it shows in capabilities page
 
 ## Important Resrouces
- Videos, Apple Developer Documentation, and other resources we referenced 
+ Videos, Apple Developer Documentation, and other resources we referenced
  frequently while creating this project.
  - [File System Programming Guide] | Apple Developers
  - [Intro to NSFileManager] | Ray Wenderlich
