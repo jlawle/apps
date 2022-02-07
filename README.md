@@ -72,6 +72,9 @@ and its corresponding targets.
 
 ### File System Diagrams
 ![The App Sandbox](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/art/ios_app_layout_2x.png)
+- Data Container holds data for app and user
+- app can request access to additional containers (iCloud) during runtime
+- apps are typically prohibited from creating/accessing files outside container directories
 
 ## CloudKit Research
 - Access to CloudKit data based on Apple ID, do not need in-app sign in
