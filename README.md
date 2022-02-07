@@ -77,8 +77,7 @@ and its corresponding targets.
 - Access to CloudKit data based on Apple ID, do not need in-app sign in
 - Uses URLSession, makes request over Wifi or cellular connection
 - [CloudKit Console] to accesss cloud container
-- [CloudKit Development] (container structure, environments, permissions, connectivity etc.)
-- [iCloud File Management]: <https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/iCloud/iCloud.html#//apple_ref/doc/uid/TP40010672-CH12-SW1>
+- [CloudKit Development] (container structure, environments, permissions, connectivity etc.)
 
 ## Adding  CLoudKit Capabilities
 - In XCode Project Navigator, select project and project target
@@ -103,6 +102,7 @@ and its corresponding targets.
 [CLoudKit Development]: <https://developer.apple.com/icloud/cloudkit/designing/>
 [CloudKit Console]: <https://icloud.developer.apple.com/>
 [iCloud Design Guide]: <https://developer.apple.com/library/archive/documentation/General/Conceptual/iCloudDesignGuide/Chapters/DesigningForDocumentsIniCloud.html#//apple_ref/doc/uid/TP40012094-CH2>
+[iCloud File Management]: <https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/iCloud/iCloud.html#//apple_ref/doc/uid/TP40010672-CH12-SW1>
 
 
 
