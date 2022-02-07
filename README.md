@@ -95,6 +95,7 @@ and its corresponding targets.
  - [Intro to NSFileManager] | Ray Wenderlich
  - [CloudKit Development] | Apple Developers
  - [iCloud Design Guide] | Apple Developers
+ - [WatchKit Framework] | Apple Developers
 
 
 
@@ -107,6 +108,7 @@ and its corresponding targets.
 [CloudKit Console]: <https://icloud.developer.apple.com/>
 [iCloud Design Guide]: <https://developer.apple.com/library/archive/documentation/General/Conceptual/iCloudDesignGuide/Chapters/DesigningForDocumentsIniCloud.html#//apple_ref/doc/uid/TP40012094-CH2>
 [iCloud File Management]: <https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/iCloud/iCloud.html#//apple_ref/doc/uid/TP40010672-CH12-SW1>
+[WatchKit Framework]: <https://developer.apple.com/documentation/watchkit>
 
 
 
