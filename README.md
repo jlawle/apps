@@ -78,6 +78,7 @@ and its corresponding targets.
 - Uses URLSession, makes request over Wifi or cellular connection
 - [CloudKit Console] to accesss cloud container
 - [CloudKit Development] (container structure, environments, permissions, connectivity etc.)
+- [iCloud File Management]: <https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/iCloud/iCloud.html#//apple_ref/doc/uid/TP40010672-CH12-SW1>
 
 ## Adding  CLoudKit Capabilities
 - In XCode Project Navigator, select project and project target
