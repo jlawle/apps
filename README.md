@@ -1,10 +1,10 @@
 # BiteTracker - SimpleDataCollector
 <p>
-A group of watchOS and macOS apps to collect motion data and record instances
-of eating and drinking throughout the day. SimpleDataCollector is an independent
-watchOS app that collects raw motion data from the apple watch. This data is then
-exported to a macOS app for viewing via cloudKit. The watch app will track x,y,z
-acceleration, gyroscope motion, and user-driven timestamps.
+A group of watchOS and macOS apps to collect motion data and record instances
+of eating and drinking throughout the day. SimpleDataCollector is an independent
+watchOS app that collects raw motion data from the apple watch. This data is then
+exported to a macOS app for viewing via cloudKit. The watch app will track x,y,z
+acceleration, gyroscope motion, and user-driven timestamps.
 </p>
 
 ## Features
