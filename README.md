@@ -68,7 +68,18 @@ Workspace: Data Logger
 - watchOS app -> companion IOS app -> dropBox Server -> macOS app
 - watchOS app -> companion IOS app -> download container to computer -> macOS app
 
-*We are currently proceeding with this dataflow path
+*** We are currently proceeding with this dataflow path
+ Second and third dataflow options have a companion app, which would require watchkit connectivity to send data between apps. The second option would require user to download container, which is too complicated on the user side. Third option would require API calls to dropbox. First option provides the simpliest path from watch to macOS app with only CloudKit capabilities needed.
+
+## CloudKit Steps:
+- setup container with CKContainer.defaultContainer
+- create recordID, using date string for recordID
+- create record with custom type
+  * recordType kind of like struct, each has different fields
+  * RecordType: each record could contain the motion data & date, would result in a lot of records though
+  * if each ID is date first, could sort/categorize them in macOS app by date
+- each record type with fields for accX/Y/Z and gyroX/Y/Z and time
+  * may not need time field if we can extract time/date from record ID
 
 ### File System Diagrams
 ![The App Sandbox](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/art/ios_app_layout_2x.png)
