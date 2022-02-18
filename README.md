@@ -1,4 +1,4 @@
-# BiteTracker - SimpleDataCollector
+# BiteTracker - SimpleDataCollector
 <p>
 A group of watchOS and macOS apps to collect motion data and record instances
 of eating and drinking throughout the day. SimpleDataCollector is an independent
@@ -6,34 +6,34 @@ watchOS app that collects raw motion data from the apple watch. This data is the
 exported to a macOS app for viewing via cloudKit. The watch app will track x,y,z
 acceleration, gyroscope motion, and user-driven timestamps.
 </p>
-
-## Features
-- Record motion data in background on independent watchOS app
-- GUI to record user-entered timestamp of eating events (button)
-- Export motion and time data to cloud (possibly implement another button)
-- Create macOS app to gather and sort data from cloud
-
-> This is a Clemson ECE research project led by [Dr. Adam Hoover] as part of his
-> Eating Detection research.
-> Coded by John Lawler (Graduate CpE) and Cameron Burroughs (Undergraduate CpE).
-> More information can be found here: http://cecas.clemson.edu/~ahoover/eat-detect/
-
-## Technology
-BiteTracker uses mostly apple technologies to record, export, and import data.
-- Xcode Version 13.2.1 - Text-editor, compiler, and simulator.
-- cloudKit - container to hold data
-- Objective-C - primary programming language
-- Swift - secondary programming language
-- GitHub - repository for collaboration
-
-## Creating Independent watchOS app in Xcode
-1. open Xcode
-2. File -> New -> Project
-3. In project template window, select watchOS -> Watch App
-4. Bundle identifier: com.hoover.[ProductName]
-5. Interface: Storyboard
-6. Language: Objective-C (or Swift)
-
+
+## Features
+- Record motion data in background on independent watchOS app
+- GUI to record user-entered timestamp of eating events (button)
+- Export motion and time data to cloud (possibly implement another button)
+- Create macOS app to gather and sort data from cloud
+
+> This is a Clemson ECE research project led by [Dr. Adam Hoover] as part of his
+> Eating Detection research.
+> Coded by John Lawler (Graduate CpE) and Cameron Burroughs (Undergraduate Cpe).
+> More information can be found here: http://cecas.clemson.edu/~ahoover/eat-detect/
+
+## Technology
+BiteTracker uses mostly apple technologies to record, export, and import data.
+- Xcode Version 13.2.1 - Text-editor, compiler, and simulator.
+- cloudKit - container to hold data
+- Objective-C - primary programming language
+- Swift - secondary programming language
+- GitHub - repository for collaboration
+
+## Creating Independent watchOS app in Xcode
+1. open Xcode
+2. File -> New -> Project
+3. In project template window, select watchOS -> Watch App
+4. Bundle identifier: com.hoover.[ProductName]
+5. Interface: Storyboard
+6. Language: Objective-C (or Swift)
+
 ## Compilation/ Simulation
 To build project:
 - Product -> Build For -> Testing
