@@ -86,9 +86,11 @@ Workspace: Data Logger
 ## CloudKit Databases
 Public:
 - everyone using the app can read this data.
+
 Private: 
 - unique to the app and the user, the user's unique app data
 - user must be signed into icloud to access
+
 Shared: 
 - most advanced/complicated
 - user still must be signed into iCloud Account to access
