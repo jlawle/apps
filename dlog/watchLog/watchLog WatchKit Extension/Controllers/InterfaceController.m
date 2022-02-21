@@ -28,6 +28,7 @@
     
 }
 
+
 - (void)awakeWithContext:(id)context {
     // Configure interface objects here.
     // Create string with date/time
@@ -53,24 +54,51 @@
     
     NSString *dateString = [formatDate stringFromDate:currentDate];
     NSString *timeString = [formatTime stringFromDate:currentDate];
+    dateString = [dateString stringByAppendingString:timeString];
     NSLog(@"Record Name: %@", dateString);
     // Create record ID using timeStamp
     // NOTE: currently recordID is date & time, may want to change to date, add time to record information
     CKRecordID *recordID = [[CKRecordID alloc] initWithRecordName: dateString];
     
     // Create CloudKit Record
-    CKContainer *container = CKContainer.defaultContainer;  //NOT SURE IF THIS IS RIGHT
+    CKContainer *container = [CKContainer defaultContainer];  //NOT SURE IF THIS IS RIGHT
     CKRecord *record = [[CKRecord alloc] initWithRecordType:@"Motion" recordID:recordID];
     [record setObject:timeString forKey:@"Time"];
     [record setObject:myFileAsset forKey:@"File"];
     
-    CKDatabase *database = container.publicCloudDatabase;
+    CKDatabase *database = [container publicCloudDatabase];
     NSLog(@"Record: %@", record);
    // NSLog(@"Container: %@", container);
    // NSLog(@"Database: %@", database);
     //save record
+<<<<<<< HEAD:dlog/watchLog/watchLog WatchKit Extension/InterfaceController.m
     [database saveRecord:record completionHandler:^(CKRecord *recordRet, NSError *error) {
        //  NSLog(@"Record after save attempt: %@", recordRet);
+=======
+    
+    // Check if Fetchable record
+//    [database fetchRecordWithID:recordID completionHandler:^(CKRecord *record, NSError *error) {
+//        NSLog(@"Account status: %@, error: %@", record, error);
+//
+//        [record setObject:timeString forKey:@"Time"];
+//
+//        [database saveRecord:record completionHandler:^(CKRecord *record, NSError *error) {
+//            NSLog(@"Record after save attempt: %@, %@", record, error);
+//        }];
+//
+//    }];
+           
+    
+//    // check account status
+//    [container accountStatusWithCompletionHandler:^(CKAccountStatus accountStatus, NSError * _Nullable error) {
+//        //Here goes your code to handle the account status
+//        NSLog(@"Account status: %ld, error: %@", (long)accountStatus, error);
+//    }];
+    
+    // Save Record manually
+    [database saveRecord:record completionHandler:^(CKRecord *record, NSError *error) {
+        NSLog(@"Record after save attempt: %@, %@", record, error);
+>>>>>>> 6267a47... simple record upload with date-time string as name:dlog/watchLog/watchLog WatchKit Extension/Controllers/InterfaceController.m
     }];
     
  

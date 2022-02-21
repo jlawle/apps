@@ -16,6 +16,7 @@
 		1F4BD60127B1C86300510346 /* ComplicationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4BD60027B1C86300510346 /* ComplicationController.m */; };
 		1F4BD60327B1C86400510346 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F4BD60227B1C86400510346 /* Assets.xcassets */; };
 		1F4BD61527B1CB3500510346 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F4BD61427B1CB3500510346 /* CloudKit.framework */; };
+		E51166DA27C0B777002B017D /* CKManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E51166D927C0B777002B017D /* CKManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,8 @@
 		1F4BD60427B1C86400510346 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F4BD61227B1CB3200510346 /* watchLog WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "watchLog WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		1F4BD61427B1CB3500510346 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.3.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
+		E51166D927C0B777002B017D /* CKManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CKManager.m; sourceTree = "<group>"; };
+		E51166DC27C0B7EB002B017D /* CKManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CKManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,13 +125,11 @@
 		1F4BD5F827B1C86300510346 /* watchLog WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				E51166D827C0B728002B017D /* Managers */,
+				E51166D727C0B182002B017D /* Controllers */,
 				1F4BD61227B1CB3200510346 /* watchLog WatchKit Extension.entitlements */,
-				1F4BD5F927B1C86300510346 /* InterfaceController.h */,
-				1F4BD5FA27B1C86300510346 /* InterfaceController.m */,
 				1F4BD5FC27B1C86300510346 /* ExtensionDelegate.h */,
 				1F4BD5FD27B1C86300510346 /* ExtensionDelegate.m */,
-				1F4BD5FF27B1C86300510346 /* ComplicationController.h */,
-				1F4BD60027B1C86300510346 /* ComplicationController.m */,
 				1F4BD60227B1C86400510346 /* Assets.xcassets */,
 				1F4BD60427B1C86400510346 /* Info.plist */,
 			);
@@ -141,6 +142,26 @@
 				1F4BD61427B1CB3500510346 /* CloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E51166D727C0B182002B017D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1F4BD5FF27B1C86300510346 /* ComplicationController.h */,
+				1F4BD60027B1C86300510346 /* ComplicationController.m */,
+				1F4BD5F927B1C86300510346 /* InterfaceController.h */,
+				1F4BD5FA27B1C86300510346 /* InterfaceController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E51166D827C0B728002B017D /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E51166D927C0B777002B017D /* CKManager.m */,
+				E51166DC27C0B7EB002B017D /* CKManager.h */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +293,7 @@
 				1F4BD60127B1C86300510346 /* ComplicationController.m in Sources */,
 				1F4BD5FE27B1C86300510346 /* ExtensionDelegate.m in Sources */,
 				1F4BD5FB27B1C86300510346 /* InterfaceController.m in Sources */,
+				E51166DA27C0B777002B017D /* CKManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
