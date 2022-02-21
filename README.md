@@ -89,11 +89,11 @@ Public:
 
 Private: 
 - unique to the app and the user, the user's unique app data
-- user must be signed into icloud to access
+- user must be signed into icloud to access (SOP)
 
 Shared: 
 - most advanced/complicated
-- user still must be signed into iCloud Account to access
+- user still must be signed into iCloud Account to access (SOP)
 - multiple icloud users in a specified group can read this data
 
 > NOTE: Can use a combination of public and private
