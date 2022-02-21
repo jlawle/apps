@@ -76,10 +76,25 @@ Workspace: Data Logger
 - create recordID, using date string for recordID
 - create record with custom type
   * recordType kind of like struct, each has different fields
-  * RecordType: each record could contain the motion data & date, would result in a lot of records though
+  * recordType: Motion
+    * Fields: Time (String) [NOTE: will eventually be CKAsset type, string used to initially test upload works correctly]
   * if each ID is date first, could sort/categorize them in macOS app by date
-- each record type with fields for accX/Y/Z and gyroX/Y/Z and time
+- each CKAssest is a file containing motion data for the day
   * may not need time field if we can extract time/date from record ID
+- currently setup using public Database, may want to switch to private or shared later.
+
+## CloudKit Databases
+Public:
+- everyone using the app can read this data.
+Private: 
+- unique to the app and the user, the user's unique app data
+- user must be signed into icloud to access
+Shared: 
+- most advanced/complicated
+- user still must be signed into iCloud Account to access
+- multiple icloud users in a specified group can read this data
+
+> NOTE: Can use a combination of public and private
 
 ### File System Diagrams
 ![The App Sandbox](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/art/ios_app_layout_2x.png)
