@@ -20,6 +20,9 @@
 		E511671A27CD670F002B017D /* dataLoggerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E511671927CD670F002B017D /* dataLoggerUITests.swift */; };
 		E511671C27CD670F002B017D /* dataLoggerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E511671B27CD670F002B017D /* dataLoggerUITestsLaunchTests.swift */; };
 		E511673327CD6770002B017D /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E511673227CD6770002B017D /* CloudKit.framework */; };
+		E511673727D6A003002B017D /* FileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E511673627D6A003002B017D /* FileUtils.swift */; };
+		E511673A27DC0AA7002B017D /* CKUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E511673927DC0AA7002B017D /* CKUtils.swift */; };
+		E511673C27DC0BBD002B017D /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E511673B27DC0BBD002B017D /* Config.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +101,11 @@
 		E511671B27CD670F002B017D /* dataLoggerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataLoggerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E511673027CD6767002B017D /* dataLogger WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "dataLogger WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		E511673227CD6770002B017D /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.3.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
+		E511673427D6A002002B017D /* dataLogger-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dataLogger-Bridging-Header.h"; sourceTree = "<group>"; };
+		E511673527D6A002002B017D /* dataLogger WatchKit App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dataLogger WatchKit App-Bridging-Header.h"; sourceTree = "<group>"; };
+		E511673627D6A003002B017D /* FileUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtils.swift; sourceTree = "<group>"; };
+		E511673927DC0AA7002B017D /* CKUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKUtils.swift; sourceTree = "<group>"; };
+		E511673B27DC0BBD002B017D /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +137,7 @@
 		E51166DD27CD670B002B017D = {
 			isa = PBXGroup;
 			children = (
+				E511673827D6A02F002B017D /* Utils */,
 				E51166EC27CD670B002B017D /* dataLogger WatchKit App */,
 				E51166FA27CD670E002B017D /* dataLogger WatchKit Extension */,
 				E511670E27CD670F002B017D /* dataLoggerTests */,
@@ -170,6 +179,8 @@
 				E511670327CD670F002B017D /* Assets.xcassets */,
 				E511670527CD670F002B017D /* Info.plist */,
 				E511670627CD670F002B017D /* PushNotificationPayload.apns */,
+				E511673427D6A002002B017D /* dataLogger-Bridging-Header.h */,
+				E511673527D6A002002B017D /* dataLogger WatchKit App-Bridging-Header.h */,
 			);
 			path = "dataLogger WatchKit Extension";
 			sourceTree = "<group>";
@@ -197,6 +208,16 @@
 				E511673227CD6770002B017D /* CloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E511673827D6A02F002B017D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E511673627D6A003002B017D /* FileUtils.swift */,
+				E511673927DC0AA7002B017D /* CKUtils.swift */,
+				E511673B27DC0BBD002B017D /* Config.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,9 +322,11 @@
 				TargetAttributes = {
 					E51166E327CD670B002B017D = {
 						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
 					};
 					E51166E727CD670B002B017D = {
 						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
 					};
 					E51166F527CD670E002B017D = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -389,7 +412,10 @@
 				E511670027CD670E002B017D /* NotificationController.swift in Sources */,
 				E511670227CD670E002B017D /* ComplicationController.swift in Sources */,
 				E51166FE27CD670E002B017D /* ExtensionDelegate.swift in Sources */,
+				E511673C27DC0BBD002B017D /* Config.swift in Sources */,
+				E511673A27DC0AA7002B017D /* CKUtils.swift in Sources */,
 				E51166FC27CD670E002B017D /* InterfaceController.swift in Sources */,
+				E511673727D6A003002B017D /* FileUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,7 +615,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Debug;
 		};
@@ -621,7 +647,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};
@@ -631,6 +657,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = EDHRW4QH65;
@@ -638,15 +665,22 @@
 				IBSC_MODULE = dataLogger_WatchKit_Extension;
 				INFOPLIST_KEY_CFBundleDisplayName = "dataLogger WatchKit App";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Hoover.dataLogger.dataLogger.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "dataLogger WatchKit Extension/dataLogger WatchKit App-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Debug;
 		};
@@ -656,6 +690,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = EDHRW4QH65;
@@ -663,27 +698,41 @@
 				IBSC_MODULE = dataLogger_WatchKit_Extension;
 				INFOPLIST_KEY_CFBundleDisplayName = "dataLogger WatchKit App";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Hoover.dataLogger.dataLogger.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "dataLogger WatchKit Extension/dataLogger WatchKit App-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};
 		E511672827CD670F002B017D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = EDHRW4QH65;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Hoover.dataLogger.dataLogger;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Hoover.dataLogger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "dataLogger WatchKit Extension/dataLogger-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -691,12 +740,19 @@
 		E511672927CD670F002B017D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = EDHRW4QH65;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Hoover.dataLogger.dataLogger;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Hoover.dataLogger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "dataLogger WatchKit Extension/dataLogger-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

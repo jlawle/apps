@@ -11,9 +11,14 @@ import CloudKit
 
 
 class InterfaceController: WKInterfaceController {
-
+    // Declare file utilities
+    let fileUtils = FileUtils()
+    let ckutils = CKUtils()
+    
+    
     override func awake(withContext context: Any?) {
         // Configure interface objects here.
+        testFileUpload()
     }
     
     override func willActivate() {
@@ -28,52 +33,69 @@ class InterfaceController: WKInterfaceController {
     
     
     // Test an icloud Record upload
-    func testUpload() {
+    func testFileUpload() {
+       // Get time
+        let timeStr = getTime()
+        let filename = "FileWithTime"
+        let fileDataStr = String(format: "%@%@", "The current time: ", timeStr)
+        print(fileDataStr)
         
-        // Initialize record with type
-        let record = CKRecord(recordType: "Motion")
+        // Save file with given text string to documents directory
+        _ = fileUtils.save(text: fileDataStr,
+                       toDirectory: fileUtils.documentDirectory(),
+                       withFileName: filename)
         
-        // Set the corresponding record ID to current time
-        record.recordID = getTime()
-        record.setValuesForKeys([
-            "Time": getTime()
-        ])
+
         
-        // Set up container
-        let container = CKContainer.default()
-        let database = container.publicCloudDatabase
+        // Create Record for new file
+        let record = ckutils.createRecord(Type: "Motion",
+                                          ID: timeStr )
         
+
+        // Save record with file given corresponding pathurl
+        ckutils.saveRecord(filename: filename,
+                           time: getTime(),
+                           record: record)
         
+         // PErformed in saveRecord()
+//        // Set the corresponding record ID to current time
+//        //record.recordID = timeStr
+//        record.setValuesForKeys([
+//            "Time": getTime()
+//        ])
         
-        // Check account status, handle gracefullu
-        CKContainer.default().accountStatus { accountStatus, error in
-            if accountStatus == .noAccount {
-                DispatchQueue.main.async {
-                    let message =
-                        """
-                        Sign in to your iCloud account to write records.
-                        On the Home screen, launch Settings, tap Sign in to your
-                        iPhone/iPad, and enter your Apple ID. Turn iCloud Drive on.
-                        """
-                    let alert = UIAlertController(
-                        title: "Sign in to iCloud",
-                        message: message,
-                        preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .cancel))
-                    self.present(alert, animated: true)
-                }
-            }
-            else {
-                // Save your record here.
-            }
-        }
+//        // Set up container
+//        //let container = CKContainer.default()
+//        let container = CKContainer(identifier: "iCloud.com.Hoover.watchLog.watchkitapp.watchkitextension")
+//
+//        let database = container.publicCloudDatabase
         
         
         
+        // Check account status, handle gracefully
+//        container.accountStatus { accountStatus, error in
+//            // Handle for if user has no account
+//            if accountStatus == .noAccount {
+//              print("Account Status >> No account found")
+//            }
+//            else {
+//                // Save your record here.
+//                // Check if record exists already (fetchRecord)
+//
+//                database.save(record, completionHandler: { record, error in
+//                    if let saveError = error {
+//                            print("An error occurred in \(saveError)")
+//                        } else {
+//                            // Saved record
+//                            print("Saved?")
+//                        }
+//                })
+//            }
+//        }
     }
     
     // Retrieve date and time
-    func getTime() -> NSString {
+    func getTime() -> String {
         // get the current date and time
         let currentDateTime = Date()
 
@@ -83,9 +105,9 @@ class InterfaceController: WKInterfaceController {
         // get the date time String from the date object
         formatter.timeStyle = .short
         formatter.dateStyle = .short
-        str = formatter.string(from: currentDateTime)
-        
-        print(str)
+        let str = formatter.string(from: currentDateTime)
+    
         return str
     }
+   
 }
