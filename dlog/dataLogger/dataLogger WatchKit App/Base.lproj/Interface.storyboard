@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14256" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="20037" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14243"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14219"/>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="20006"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="dataLogger_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <button width="1" alignment="center" verticalAlignment="center" title="START LOG" id="E8g-zu-bzW" userLabel="logButton">
+                            <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" type="boldSystem" pointSize="15"/>
+                            <connections>
+                                <action selector="recordButtonPressed" destination="AgC-eL-Hgc" id="WoA-dD-972"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="delete temp file" id="axu-lp-zGP">
+                            <connections>
+                                <action selector="deleteTempButtonPressed" destination="AgC-eL-Hgc" id="rHs-oy-CU2"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="logButton" destination="E8g-zu-bzW" id="sJH-vH-3wN"/>
+                    </connections>
+                </controller>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
         </scene>
@@ -32,14 +52,14 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="dataLogger_WatchKit_App" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="468" y="643"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="Niz-AI-uX2">
             <objects>
-                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="dataLogger_WatchKit_App" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="468" y="345"/>
         </scene>

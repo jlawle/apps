@@ -12,5 +12,17 @@
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.watchkit</string>
 	</dict>
+	<key>UIBackgroundModes</key>
+	<array/>
+	<key>NSHealthShareUsageDescription</key>
+	<string>share acceleration and gyroscope data with your cloudkit</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>use acceleration and gyroscope data</string>
+	<key>CFBundleIdentifier</key>
+	<string></string>
+	<key>WKBackgroundModes</key>
+	<array>
+		<string>workout-processing</string>
+	</array>
 </dict>
 </plist>

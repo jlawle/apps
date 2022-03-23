@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 public class FileUtils {
     
     init() {}
@@ -37,6 +35,7 @@ public class FileUtils {
         return nil
     }
     
+    // UNUSED, CAN BE DELETED
     // Basic function for saving a file to documents directory given text string
     func save(text: String, toDirectory directory: String, withFileName fileName: String) -> String {
         
@@ -63,8 +62,54 @@ public class FileUtils {
         return filePath
     }
     
+    // split save file into two fns (get path & update CSV), can prob combine some way but it works
+    func getPath(inDirectory directory:String, withFileName fileName: String) -> String {
+        guard let filePath = self.append(toPath: directory, withPathComponent: fileName)
+        else {
+            // handle error here
+            print("Error with creating filepath ...")
+            return "nil"
+        }
+        return filePath
+    }
     
+    // Updates CSV file at URL w info (encodes info: string  into data)
+    func updtateCSV(atURL fileURL: NSURL, withInfo info: String) {
+        
+        guard let data = info.data(using: String.Encoding.utf8) else {return}
+       
+        // If file exists, go to end of file, adds encoded info->data
+        if FileManager.default.fileExists(atPath: (fileURL as URL).path) {
+            if let fileHandle = try? FileHandle(forWritingTo: fileURL as URL) {
+                       fileHandle.seekToEndOfFile()
+                       fileHandle.write(data)
+                       fileHandle.closeFile()
+                   }
+            print("[added] \(info)")
+        } else {
+            // File DNE at path, adds header & info to new file
+            var csvHeader = "Time,accx,accy,accz,gyrox,gyroy,gyroz\n"
+            csvHeader.append(info)
+            print("[header] \(csvHeader)")
+            
+            do {
+                try csvHeader.write(to: fileURL as URL, atomically: true, encoding: String.Encoding.utf8)
+            } catch {
+                print("Failed to create file")
+                print("\(error)")
+            }
+        }
+    }
     
+    func deleteFile(withPath filePath: String) {
+        let manager = FileManager.default
+        if manager.fileExists(atPath: filePath) {
+            try? manager.removeItem(atPath: filePath)
+            print("file deleted?")
+        } else {
+            print("file does not exist")
+        }
+    }
     
     // Function to check if file exists in documents directory
     func checkFile(name: String) -> Bool {
@@ -77,6 +122,7 @@ public class FileUtils {
                     return true
                 } else {
                     print("FILE NOT AVAILABLE")
+                    
                     return false
                 }
             } else {

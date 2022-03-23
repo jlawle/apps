@@ -8,17 +8,27 @@
 import WatchKit
 import Foundation
 import CloudKit
-
+import CoreMotion
 
 class InterfaceController: WKInterfaceController {
+    
+    // Declare button variables
+    @IBOutlet var logButton: WKInterfaceButton!
+    
     // Declare file utilities
     let fileUtils = FileUtils()
     let ckutils = CKUtils()
+    let cmutils = CMUtils()
+    let logThread = DispatchQueue(label: "BackgroundThread", qos: .background)
+    
+    
+    var logging: Bool = false   // Boolean to determine button state
+    var filePath: String = ""
+    var fileName: String = ""
     
     
     override func awake(withContext context: Any?) {
         // Configure interface objects here.
-        testFileUpload()
     }
     
     override func willActivate() {
@@ -29,15 +39,75 @@ class InterfaceController: WKInterfaceController {
         // This method is called when watch view controller is no longer visible
     }
 
+    @IBAction func deleteTempButtonPressed() {
+        // deletes whatever file was made that date from documents directory
+        // press AFTER file has been uploaded to cloudkit, this is a temp utility
+        // function so we do not overcrowd the documents directory
+        fileUtils.deleteFile(withPath: filePath)
+    }
+    
+    @IBAction func recordButtonPressed() {
+        if(!logging) {
+            // code to execute after "START LOG" button is pressed
+            logButton.setTitle("STOP LOG")
+            logButton.setBackgroundColor(UIColor.red)
+            logging = true
+            
+            // sends function to execute on seperate thread, allowing button to update
+            // basically, without this, button won't change til after all logging is done
+            logThread.async {
+                self.startLogging()
+            }
+            
+        } else {
+            // code to execute after "STOP LOG" button is pressed
+            logButton.setTitle("START LOG")
+            logButton.setBackgroundColor(UIColor.green)
+            logging = false
+            
+            // sends function to seperate thread, allowing button to update.
+            logThread.async {
+                self.stopLogging()
+            }
+            
+        }
+    }
+    
+    func startLogging() {
+        
+        //  Create filename from Date, will be MM-dd-YYYY.csv
+        let dateString = cmutils.getDate()
+        fileName = dateString + ".csv"
+        
+        // Create file in directory, get path of file
+        filePath = fileUtils.getPath(inDirectory: fileUtils.documentDirectory(), withFileName: fileName)
+        
+        // Start sending updates to file
+        cmutils.startUpdates(sendTo: filePath)
+    }
+    
+    func stopLogging() {
+        
+        // Stop updating the file
+        cmutils.stopUpdates()
+        
+        // create record ID from date & time
+        var recordID = cmutils.getDate()
+        recordID.append(" \(cmutils.getTime())")
+        
+        // Create & save record
+        ckutils.saveRecord(filename: fileName, time: cmutils.getTime(), record: ckutils.createRecord(Type: "Motion", ID: recordID))
+    }
     
     
-    
+    // CAN DELETE (upon johns approval)
     // Test an icloud Record upload
     func testFileUpload() {
        // Get time
         let timeStr = getTime()
-        let filename = "FileWithTime"
-        let fileDataStr = String(format: "%@%@", "The current time: ", timeStr)
+        let filename = "FileWithTime.txt"
+        //let fileDataStr = String(format: "%@%@", "The current time: ", timeStr)
+        let fileDataStr = "Upload moved to button function"
         print(fileDataStr)
         
         // Save file with given text string to documents directory
@@ -94,6 +164,7 @@ class InterfaceController: WKInterfaceController {
 //        }
     }
     
+    // CAN BE DELETED, added different versions [getDate() and getTime() to CMUtils]
     // Retrieve date and time
     func getTime() -> String {
         // get the current date and time
