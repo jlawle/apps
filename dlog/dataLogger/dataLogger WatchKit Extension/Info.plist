@@ -19,7 +19,7 @@
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>use acceleration and gyroscope data</string>
 	<key>CFBundleIdentifier</key>
-	<string></string>
+	<string>com.Hoover.dataLogger.dataLogger.watchkitapp.watchkitextension</string>
 	<key>WKBackgroundModes</key>
 	<array>
 		<string>workout-processing</string>

@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		1FA7D12A27EB8EEF001DA0DA /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA7D12927EB8EEF001DA0DA /* HealthKit.framework */; };
 		1FC265A027EA2A7D0015D212 /* CMUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC2659F27EA2A7D0015D212 /* CMUtils.swift */; };
+		E50432FB27F7B6A3008973E4 /* dataLogger WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E51166F627CD670E002B017D /* dataLogger WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E51166E927CD670B002B017D /* dataLogger WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E51166E827CD670B002B017D /* dataLogger WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E51166EF27CD670B002B017D /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E51166ED27CD670B002B017D /* Interface.storyboard */; };
 		E51166F127CD670D002B017D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E51166F027CD670D002B017D /* Assets.xcassets */; };
-		E51166F727CD670E002B017D /* dataLogger WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E51166F627CD670E002B017D /* dataLogger WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E51166FC27CD670E002B017D /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51166FB27CD670E002B017D /* InterfaceController.swift */; };
 		E51166FE27CD670E002B017D /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51166FD27CD670E002B017D /* ExtensionDelegate.swift */; };
 		E511670027CD670E002B017D /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51166FF27CD670E002B017D /* NotificationController.swift */; };
@@ -61,11 +61,11 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		E511672227CD670F002B017D /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				E51166F727CD670E002B017D /* dataLogger WatchKit Extension.appex in Embed App Extensions */,
+				E50432FB27F7B6A3008973E4 /* dataLogger WatchKit Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;

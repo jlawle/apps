@@ -48,6 +48,7 @@ class InterfaceController: WKInterfaceController {
     
     @IBAction func recordButtonPressed() {
         if(!logging) {
+            print("Start log button press")
             // code to execute after "START LOG" button is pressed
             logButton.setTitle("STOP LOG")
             logButton.setBackgroundColor(UIColor.red)
@@ -60,6 +61,7 @@ class InterfaceController: WKInterfaceController {
             }
             
         } else {
+            print("Stop log button press")
             // code to execute after "STOP LOG" button is pressed
             logButton.setTitle("START LOG")
             logButton.setBackgroundColor(UIColor.green)
@@ -74,6 +76,7 @@ class InterfaceController: WKInterfaceController {
     }
     
     func startLogging() {
+        print("Starting logging")
         
         //  Create filename from Date, will be MM-dd-YYYY.csv
         let dateString = cmutils.getDate()
@@ -87,6 +90,7 @@ class InterfaceController: WKInterfaceController {
     }
     
     func stopLogging() {
+        print("Stopping Logging")
         
         // Stop updating the file
         cmutils.stopUpdates()
@@ -99,70 +103,6 @@ class InterfaceController: WKInterfaceController {
         ckutils.saveRecord(filename: fileName, time: cmutils.getTime(), record: ckutils.createRecord(Type: "Motion", ID: recordID))
     }
     
-    
-    // CAN DELETE (upon johns approval)
-    // Test an icloud Record upload
-    func testFileUpload() {
-       // Get time
-        let timeStr = getTime()
-        let filename = "FileWithTime.txt"
-        //let fileDataStr = String(format: "%@%@", "The current time: ", timeStr)
-        let fileDataStr = "Upload moved to button function"
-        print(fileDataStr)
-        
-        // Save file with given text string to documents directory
-        _ = fileUtils.save(text: fileDataStr,
-                       toDirectory: fileUtils.documentDirectory(),
-                       withFileName: filename)
-        
-
-        
-        // Create Record for new file
-        let record = ckutils.createRecord(Type: "Motion",
-                                          ID: timeStr )
-        
-
-        // Save record with file given corresponding pathurl
-        ckutils.saveRecord(filename: filename,
-                           time: getTime(),
-                           record: record)
-        
-         // PErformed in saveRecord()
-//        // Set the corresponding record ID to current time
-//        //record.recordID = timeStr
-//        record.setValuesForKeys([
-//            "Time": getTime()
-//        ])
-        
-//        // Set up container
-//        //let container = CKContainer.default()
-//        let container = CKContainer(identifier: "iCloud.com.Hoover.watchLog.watchkitapp.watchkitextension")
-//
-//        let database = container.publicCloudDatabase
-        
-        
-        
-        // Check account status, handle gracefully
-//        container.accountStatus { accountStatus, error in
-//            // Handle for if user has no account
-//            if accountStatus == .noAccount {
-//              print("Account Status >> No account found")
-//            }
-//            else {
-//                // Save your record here.
-//                // Check if record exists already (fetchRecord)
-//
-//                database.save(record, completionHandler: { record, error in
-//                    if let saveError = error {
-//                            print("An error occurred in \(saveError)")
-//                        } else {
-//                            // Saved record
-//                            print("Saved?")
-//                        }
-//                })
-//            }
-//        }
-    }
     
     // CAN BE DELETED, added different versions [getDate() and getTime() to CMUtils]
     // Retrieve date and time

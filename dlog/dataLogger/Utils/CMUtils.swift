@@ -33,12 +33,14 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
     var WKsession: HKWorkoutSession? = nil
     var builder: HKLiveWorkoutBuilder? = nil
     
-    let interval = 1.0/60.0   //sampling interval, may change
+    let interval = 1.0/15.0   //sampling interval, may change
+    private var authSemaphore = DispatchSemaphore(value: 1)
     
     
     override init() {}
     
     func startWorkoutSession() {
+        print("FCN >> Starting workout session >>")
         // if session is already started, do nothing
         if WKsession != nil {
             return
@@ -56,49 +58,62 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
         // The quantity types to read from the health store.
         // here as more of an example of infor we can get, don't NEED these for our current purposes
         let typesToRead: Set = [
-            HKQuantityType.quantityType(forIdentifier: .heartRate)!,
-            HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
+            //HKQuantityType.quantityType(forIdentifier: .heartRate)!,
+            //HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
             HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!
         ]
 
         // Request authorization for those quantity types.
-        healthStore.requestAuthorization(toShare: typesToShare, read: typesToRead) { (success, error) in
-            // Handle errors here.
-            guard success else {
-                fatalError("AUTHORIZATION ERROR: \(String(describing: error))")
-            }
-        }
-        
-        let WKconfig = HKWorkoutConfiguration()
-        WKconfig.activityType = .walking
-        WKconfig.locationType = .indoor
-        
-        // Setup builder & session
-        do {
-            WKsession = try HKWorkoutSession(healthStore: healthStore, configuration: WKconfig)
-            builder = WKsession?.associatedWorkoutBuilder()
-        } catch {
-            fatalError("Unable to create workout session!")
-        }
+        self.healthStore.requestAuthorization(toShare: typesToShare, read: typesToRead, completion: { (success, error) in
+                // Handle errors here..
+                guard success else {
+                    
+                    fatalError("AUTHORIZATION ERROR: \(String(describing: error))")
+                }
+               // self.authSemaphore.signal()
+                // PERFORM STARTING COLLLECTION HERE AFTER AUTHORIZATION IS RECIEVED
+                let WKconfig = HKWorkoutConfiguration()
+                WKconfig.activityType = .walking
+                WKconfig.locationType = .indoor
+                
+                // Setup builder & session
+                do {
+                    self.WKsession = try HKWorkoutSession(healthStore: self.healthStore, configuration: WKconfig)
+                    self.builder = self.WKsession?.associatedWorkoutBuilder()
+                } catch {
+                    fatalError("Unable to create workout session!")
+                }
 
-        builder?.dataSource = HKLiveWorkoutDataSource(healthStore: healthStore, workoutConfiguration: WKconfig)
+                self.builder?.dataSource = HKLiveWorkoutDataSource(healthStore: self.healthStore, workoutConfiguration: WKconfig)
+                
+                self.WKsession?.delegate = self
+                self.builder?.delegate = self
+                
+                // Start session and builder
+                self.WKsession?.startActivity(with: Date())
+                self.builder?.beginCollection(withStart: Date()) { (success, error) in
+                    guard success else {
+                        fatalError("Unable to begin builder collection of data: \(String(describing: error))")
+                    }
+                }
+        })
+
         
-        WKsession?.delegate = self
-        builder?.delegate = self
-        
-        // Start session and builder
-        WKsession?.startActivity(with: Date())
-        builder?.beginCollection(withStart: Date()) { (success, error) in
-            guard success else {
-                fatalError("Unable to begin builder collection of data: \(String(describing: error))")
-            }
-        }
+       
 
     }
     
     func endWorkoutSession() {
-        
+        print("FCN >> Ending workout session >>")
+        WKsession!.stopActivity(with: Date())
         WKsession!.end()
+        
+        if(WKsession!.state == .ended) {
+            print("WORKOUT ENDED")
+        } else {
+            print("WORKOUT STILL RUNNING")
+        }
+        
         builder!.endCollection(withEnd: Date()) { (success, error) in
             
             guard success else {
@@ -165,6 +180,7 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
         if (WKsession == nil){
             return
         }
+        print("FCN >> Stopping updates >>")
         
         manager.stopDeviceMotionUpdates()
         endWorkoutSession()
@@ -181,9 +197,13 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
         
         //initialize formatter & style
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm:ss"   //"HH" indicates 24-hour, "hh" 12-hour
+        formatter.dateFormat = "HH:mm:ss.SSS"   //"HH" indicates 24-hour, "hh" 12-hour
         
-        return formatter.string(from: currentDateTime)
+        let timeInterval = NSDate().timeIntervalSince1970
+        let time = String(timeInterval)
+        
+        //return formatter.string(from: currentDateTime)
+        return time
     }
     
     func getDate() ->String {

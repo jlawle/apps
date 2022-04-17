@@ -85,12 +85,12 @@ public class FileUtils {
                        fileHandle.write(data)
                        fileHandle.closeFile()
                    }
-            print("[added] \(info)")
+            //print("[added] \(info)")
         } else {
             // File DNE at path, adds header & info to new file
             var csvHeader = "Time,accx,accy,accz,gyrox,gyroy,gyroz\n"
             csvHeader.append(info)
-            print("[header] \(csvHeader)")
+            //print("[header] \(csvHeader)")
             
             do {
                 try csvHeader.write(to: fileURL as URL, atomically: true, encoding: String.Encoding.utf8)
