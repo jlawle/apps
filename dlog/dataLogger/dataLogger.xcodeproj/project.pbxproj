@@ -25,6 +25,7 @@
 		E511673727D6A003002B017D /* FileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E511673627D6A003002B017D /* FileUtils.swift */; };
 		E511673A27DC0AA7002B017D /* CKUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E511673927DC0AA7002B017D /* CKUtils.swift */; };
 		E511673C27DC0BBD002B017D /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E511673B27DC0BBD002B017D /* Config.swift */; };
+		E54ECCAF280F16B200C1E556 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = E54ECCAE280F16B200C1E556 /* Logging */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,8 +106,6 @@
 		E511671B27CD670F002B017D /* dataLoggerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataLoggerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E511673027CD6767002B017D /* dataLogger WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "dataLogger WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		E511673227CD6770002B017D /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.3.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
-		E511673427D6A002002B017D /* dataLogger-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dataLogger-Bridging-Header.h"; sourceTree = "<group>"; };
-		E511673527D6A002002B017D /* dataLogger WatchKit App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dataLogger WatchKit App-Bridging-Header.h"; sourceTree = "<group>"; };
 		E511673627D6A003002B017D /* FileUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtils.swift; sourceTree = "<group>"; };
 		E511673927DC0AA7002B017D /* CKUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKUtils.swift; sourceTree = "<group>"; };
 		E511673B27DC0BBD002B017D /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -117,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E54ECCAF280F16B200C1E556 /* Logging in Frameworks */,
 				E511673327CD6770002B017D /* CloudKit.framework in Frameworks */,
 				1FA7D12A27EB8EEF001DA0DA /* HealthKit.framework in Frameworks */,
 			);
@@ -184,8 +184,6 @@
 				E511670327CD670F002B017D /* Assets.xcassets */,
 				E511670527CD670F002B017D /* Info.plist */,
 				E511670627CD670F002B017D /* PushNotificationPayload.apns */,
-				E511673427D6A002002B017D /* dataLogger-Bridging-Header.h */,
-				E511673527D6A002002B017D /* dataLogger WatchKit App-Bridging-Header.h */,
 			);
 			path = "dataLogger WatchKit Extension";
 			sourceTree = "<group>";
@@ -243,6 +241,9 @@
 				E51166EB27CD670B002B017D /* PBXTargetDependency */,
 			);
 			name = dataLogger;
+			packageProductDependencies = (
+				E5C61DF6280E465300CA6F40 /* Logging */,
+			);
 			productName = dataLogger;
 			productReference = E51166E427CD670B002B017D /* dataLogger.app */;
 			productType = "com.apple.product-type.application.watchapp2-container";
@@ -277,6 +278,9 @@
 			dependencies = (
 			);
 			name = "dataLogger WatchKit Extension";
+			packageProductDependencies = (
+				E54ECCAE280F16B200C1E556 /* Logging */,
+			);
 			productName = "dataLogger WatchKit Extension";
 			productReference = E51166F627CD670E002B017D /* dataLogger WatchKit Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
@@ -357,6 +361,9 @@
 				Base,
 			);
 			mainGroup = E51166DD27CD670B002B017D;
+			packageReferences = (
+				E5C61DF5280E465300CA6F40 /* XCRemoteSwiftPackageReference "swift-log" */,
+			);
 			productRefGroup = E51166E527CD670B002B017D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -607,6 +614,7 @@
 				INFOPLIST_FILE = "dataLogger WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "dataLogger WatchKit Extension";
 				INFOPLIST_KEY_CLKComplicationPrincipalClass = dataLogger_WatchKit_Extension.ComplicationController;
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "update gyro and accell data";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_WKExtensionDelegateClassName = dataLogger_WatchKit_Extension.ExtensionDelegate;
 				INFOPLIST_KEY_WKWatchOnly = YES;
@@ -639,6 +647,7 @@
 				INFOPLIST_FILE = "dataLogger WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "dataLogger WatchKit Extension";
 				INFOPLIST_KEY_CLKComplicationPrincipalClass = dataLogger_WatchKit_Extension.ComplicationController;
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "update gyro and accell data";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_WKExtensionDelegateClassName = dataLogger_WatchKit_Extension.ExtensionDelegate;
 				INFOPLIST_KEY_WKWatchOnly = YES;
@@ -903,6 +912,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E5C61DF5280E465300CA6F40 /* XCRemoteSwiftPackageReference "swift-log" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-log";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E54ECCAE280F16B200C1E556 /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5C61DF5280E465300CA6F40 /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
+		};
+		E5C61DF6280E465300CA6F40 /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5C61DF5280E465300CA6F40 /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E51166DE27CD670B002B017D /* Project object */;
 }

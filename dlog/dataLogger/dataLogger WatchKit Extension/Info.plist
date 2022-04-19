@@ -15,11 +15,9 @@
 	<key>UIBackgroundModes</key>
 	<array/>
 	<key>NSHealthShareUsageDescription</key>
-	<string>share acceleration and gyroscope data with your cloudkit</string>
+	<string>share health data</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>use acceleration and gyroscope data</string>
-	<key>CFBundleIdentifier</key>
-	<string>com.Hoover.dataLogger.dataLogger.watchkitapp.watchkitextension</string>
+	<string>Update gryoscope and accelerometer data </string>
 	<key>WKBackgroundModes</key>
 	<array>
 		<string>workout-processing</string>

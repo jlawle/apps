@@ -34,13 +34,16 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
     var builder: HKLiveWorkoutBuilder? = nil
     
     let interval = 1.0/15.0   //sampling interval, may change
-    private var authSemaphore = DispatchSemaphore(value: 1)
     
     
     override init() {}
     
+    // Requests healthstore access, establishes bckgnd session to record sensor data
+    // Documentation for setting up a background workout session found here
+    // https://developer.apple.com/documentation/healthkit/workouts_and_activity_rings/running_workout_sessions
     func startWorkoutSession() {
-        print("FCN >> Starting workout session >>")
+        log.info("hi")
+        print(">> Starting workout session >>")
         // if session is already started, do nothing
         if WKsession != nil {
             return
@@ -56,45 +59,53 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
         ]
 
         // The quantity types to read from the health store.
-        // here as more of an example of infor we can get, don't NEED these for our current purposes
+        // Neccesary object, however these data are unused for sensor recording purposes.
         let typesToRead: Set = [
-            //HKQuantityType.quantityType(forIdentifier: .heartRate)!,
-            //HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
-            HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!
+            HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
+            //HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!
         ]
 
         // Request authorization for those quantity types.
         self.healthStore.requestAuthorization(toShare: typesToShare, read: typesToRead, completion: { (success, error) in
-                // Handle errors here..
                 guard success else {
-                    
                     fatalError("AUTHORIZATION ERROR: \(String(describing: error))")
                 }
-               // self.authSemaphore.signal()
-                // PERFORM STARTING COLLLECTION HERE AFTER AUTHORIZATION IS RECIEVED
+
+                // Create a workout configuration object
+                // ** Activity and location type have no effect on sensor data
                 let WKconfig = HKWorkoutConfiguration()
                 WKconfig.activityType = .walking
                 WKconfig.locationType = .indoor
                 
-                // Setup builder & session
                 do {
-                    self.WKsession = try HKWorkoutSession(healthStore: self.healthStore, configuration: WKconfig)
+                    // Initialize a new workout session with healthstore and configuration object
+                    self.WKsession = try HKWorkoutSession(healthStore: self.healthStore,
+                                                          configuration: WKconfig)
+                    
+                    // Initialize reference to builder object from our workout session
                     self.builder = self.WKsession?.associatedWorkoutBuilder()
                 } catch {
                     fatalError("Unable to create workout session!")
                 }
 
-                self.builder?.dataSource = HKLiveWorkoutDataSource(healthStore: self.healthStore, workoutConfiguration: WKconfig)
-                
+            
+                // Create an HKLiveWorkoutDataSource object and assign it to the workout builder.
+                self.builder?.dataSource = HKLiveWorkoutDataSource(healthStore: self.healthStore,
+                                                                   workoutConfiguration: WKconfig)
+            
+                // Assign delegates to monitor both the workout session and the workout builder.
                 self.WKsession?.delegate = self
                 self.builder?.delegate = self
                 
-                // Start session and builder
+                // Start session and builder collection of health data
                 self.WKsession?.startActivity(with: Date())
                 self.builder?.beginCollection(withStart: Date()) { (success, error) in
                     guard success else {
                         fatalError("Unable to begin builder collection of data: \(String(describing: error))")
                     }
+                    
+                    // Indicate workout session has begun
+                    log.info("Workout activity started, builder has begun collection")
                 }
         })
 
@@ -103,6 +114,7 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
 
     }
     
+    // Ends the current background workout session and collection of data
     func endWorkoutSession() {
         print("FCN >> Ending workout session >>")
         WKsession!.stopActivity(with: Date())
@@ -136,21 +148,24 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
         WKsession = nil
     }
     
-    // sets struct to all zeros, diagnostic to see where we are/aren't getting data
+    // Sets struct to all zeros, diagnostic to see where we are/aren't getting data
     func zeroParams() -> sensorParam {
         let sensorData = sensorParam(time: "00:00:00", gyrox: 0, gyroy: 0, gyroz: 0, accx: 0, accy: 0, accz: 0)
         return sensorData
     }
     
+    // Begins data retrieval from sensors and appends to csv file in background
     func startUpdates(sendTo filePath: String) {
         
         startWorkoutSession()
         let url = NSURL(fileURLWithPath: filePath)
 
+        // Verify device-motion service is available on device
         if !manager.isDeviceMotionAvailable {
             fatalError("Device motion not available.")
         }
 
+        // Set sampling rate
         manager.deviceMotionUpdateInterval = interval
         
         // Continually gets motion data and updates CSV file
@@ -176,6 +191,7 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
         
     }
     
+    // Stops device motion updates
     func stopUpdates() {
         if (WKsession == nil){
             return
@@ -186,47 +202,40 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
         endWorkoutSession()
     }
     
-    // Takes in sensor parameters and sorts them into a csv-style string CHANGE INFO ORDER HERE
+    // Handles sensor data struct, formats to string to write to csv
+    // Change how data is written to file here
     func sortData (usingData params: sensorParam) -> String {
         return "\(params.time),\(params.accx),\(params.accy),\(params.accz),\(params.gyrox),\(params.gyroy),\(params.gyroz)\n"
     }
     
+    // Retrieve current Timestamp as string
     func getTime() -> String {
-        // get current date/time
         let currentDateTime = Date()
         
-        //initialize formatter & style
+        // "HH" indicates 24-hour, "hh" 12-hour, "SSSS" for ms
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm:ss.SSS"   //"HH" indicates 24-hour, "hh" 12-hour
+        formatter.dateFormat = "HH:mm:ss.SSSS"
         
+        // Option for returning unix time instead, unusued
         let timeInterval = NSDate().timeIntervalSince1970
-        let time = String(timeInterval)
+        //let time = String(timeInterval)
         
-        //return formatter.string(from: currentDateTime)
-        return time
+        //return time
+        return formatter.string(from: currentDateTime)
     }
     
-    func getDate() ->String {
-        // get current date/time
+    // Retrieve current date as string
+    func getDate() -> String {
         let currentDateTime = Date()
-        
-        //initialize formatter & style
         let formatter = DateFormatter()
         formatter.dateFormat = "MM-dd-YYYY"
-        
         return formatter.string(from: currentDateTime)
     }
     
     // Extra stubs&methods needed (code inside is suggested from apple dev forums,
     // but we dont end up using any of it
     func workoutBuilder(_ workoutBuilder: HKLiveWorkoutBuilder, didCollectDataOf collectedTypes: Set<HKSampleType>) {
-        for type in collectedTypes {
-                guard let quantityType = type as? HKQuantityType else {
-                    return // Nothing to do.
-                }
-                
-                // Calculate statistics for the type.
-                let statistics = workoutBuilder.statistics(for: quantityType)
+        for _ in collectedTypes {
                 
                 DispatchQueue.main.async() {
                     // Update the user interface.
@@ -234,6 +243,7 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
             }
     }
     
+    // Necessary func for workout builder
     func workoutBuilderDidCollectEvent(_ workoutBuilder: HKLiveWorkoutBuilder) {
         //let lastEvent = workoutBuilder.workoutEvents.last
             
@@ -242,10 +252,12 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
             }
     }
     
+    // Necessary func for workout builder
     func workoutSession(_ workoutSession: HKWorkoutSession, didChangeTo toState: HKWorkoutSessionState, from fromState: HKWorkoutSessionState, date: Date) {
         //code
     }
     
+    // Necessary func for workout builder
     func workoutSession(_ workoutSession: HKWorkoutSession, didFailWithError error: Error) {
         //code
     }

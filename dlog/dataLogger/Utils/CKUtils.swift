@@ -1,6 +1,8 @@
 //
 //  CKUtils.swift
 //  dataLogger WatchKit Extension
+//  CKUtils provides helper functions for creating/uploading
+//  a record to cloudkit using CK framework.
 //
 //  Created by John Lawler on 3/11/22.
 //
@@ -13,6 +15,7 @@ class CKUtils {
     var container: CKContainer
     var database: CKDatabase
     
+    
     init(){
         // Initialize our container to our identifer
         self.container = CKContainer(identifier: Config.containerIdentifier)
@@ -22,23 +25,39 @@ class CKUtils {
     }
     
     
-    // Simple fcn for creating and returing a new record
+    // Intitialize a new cloudkit record with provided type and ID
     func createRecord(Type: String, ID: String) -> CKRecord {
-        // Initialize record with type and ID
+        log.info("Generating new record of type \(Type) with ID \(ID)")
         return CKRecord.init(recordType:    Type,
                              recordID:      CKRecord.ID(recordName: ID))
     }
     
-    // Function to save data to a record given key and data
+    // Fetch user's iCloud ID
+    func fetchUserID(container: CKContainer) -> String? {
+        var userID: String?
+        self.container.fetchUserRecordID(completionHandler: {(recordID, error) in
+            // If recordID exists, save it
+            if let name = recordID?.recordName {
+                log.info("iCloud ID: \(name)")
+                userID = name
+            }
+            // Handle errors
+            else if let error = error {
+                log.error("\(String(describing: error.localizedDescription))")
+            }
+        })
+        return userID
+    }
+    
+    // Uploads a record to cloudkit with file path, timestamp and CKRecord
     func saveRecord(filename: String, time: String, record: CKRecord) {
         let asset: CKAsset
         
         // Check if file exists at url
         if fileUtils.checkFile(name: filename) {
-            print("The file exists")
+            log.info("File \(filename) found")
         } else {
-            print("The file does not exist! ")
-            return
+            log.error("File \(filename) not found!")
         }
     
         // Create url to documents directory
@@ -53,33 +72,39 @@ class CKUtils {
             return
         }
         
-        
-        // Set the record values
-        record.setValuesForKeys(["Time": time, "File": asset])
+        // Set the record values, stores time and file data to record object
+        record.setValuesForKeys(["Time": time, "File": asset, "Filename": filename])
         
         // Check account status, handle gracefully
         self.container.accountStatus { accountStatus, error in
-            // Handle for if user has no account
-            if accountStatus == .noAccount {
-              print("Account Status >> No account found")
-            }
-            else {
-                // Save your record here.
-                // TODO: Check if record exists already (fetchRecord)
+            switch accountStatus {
+            case .available:
+                log.info("Account status available")
                 
-                
+                // Check if record already exists
+                // ....
                 
                 // Save record to public database
                 self.database.save(record, completionHandler: { record, error in
                     if let saveError = error {
-                            print("An error occurred in \(saveError)")
-                        } else {
-                            // Saved record
-                            print("Saved?")
+                        log.error("Error saving record: \(saveError)")
+                    } else {
+                        // Saved record
+                        log.info("Record saved. Record info: \(String(describing: record))")
                         }
                 })
+            case .couldNotDetermine:
+                log.info("Cannot determine account status")
+            case .restricted:
+                log.info("Account status restricted")
+            case .noAccount:
+                log.info("No iCloud account found!")
+            case .temporarilyUnavailable:
+                log.info("Account status temporarily unavailable.")
+            @unknown default:
+                fatalError("Error verifying account status: \(String(describing: error))")
             }
         }
     }
-    
 }
+    

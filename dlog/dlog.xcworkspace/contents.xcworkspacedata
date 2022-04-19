@@ -4,7 +4,4 @@
    <FileRef
       location = "group:dataLogger/dataLogger.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:watchLog/watchLog.xcodeproj">
-   </FileRef>
 </Workspace>

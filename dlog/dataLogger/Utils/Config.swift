@@ -4,6 +4,9 @@
 //
 //  Created by John Lawler on 3/11/22.
 //
+import Logging
+
+let log = Logger(label: "")
 
 enum Config {
     /// iCloud container identifier.
