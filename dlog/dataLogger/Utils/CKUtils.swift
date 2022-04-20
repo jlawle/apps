@@ -1,8 +1,6 @@
 //
 //  CKUtils.swift
 //  dataLogger WatchKit Extension
-//  CKUtils provides helper functions for creating/uploading
-//  a record to cloudkit using CK framework.
 //
 //  Created by John Lawler on 3/11/22.
 //
@@ -10,6 +8,8 @@
 import Foundation
 import CloudKit
 
+
+// CKUtils implements creating/uploading of record to iCloud
 class CKUtils {
     let fileUtils = FileUtils()
     var container: CKContainer
@@ -33,20 +33,23 @@ class CKUtils {
     }
     
     // Fetch user's iCloud ID
-    func fetchUserID(container: CKContainer) -> String? {
-        var userID: String?
-        self.container.fetchUserRecordID(completionHandler: {(recordID, error) in
+    // Currently not working... cant seem to figure out how to 
+    func fetchUserID(container: CKContainer) -> String {
+        var id = String()
+        log.info("Fetching userID ... ")
+        self.container.fetchUserRecordID(completionHandler: {(recordID, error) -> Void in
             // If recordID exists, save it
-            if let name = recordID?.recordName {
-                log.info("iCloud ID: \(name)")
-                userID = name
+            if error != nil {
+                log.error("\(String(describing: error?.localizedDescription))")
             }
-            // Handle errors
-            else if let error = error {
-                log.error("\(String(describing: error.localizedDescription))")
+            else if let name = recordID?.recordName {
+                log.info("iCloud ID: \(name), recordID is \(String(describing: recordID))")
+                id = recordID!.recordName as String
+                
             }
         })
-        return userID
+        log.info("id is \(id)")
+        return id
     }
     
     // Uploads a record to cloudkit with file path, timestamp and CKRecord
@@ -68,12 +71,17 @@ class CKUtils {
             // Generate cloudkit asset to store file
             asset = CKAsset(fileURL: urlPath)
         } else {
-            print("Path unavailable")
-            return
+            log.info("urlPath cannot append with url: \(fileurl). filename: \(filename)")
+            fatalError("Path unavailable")
         }
         
+        // Generate filename with added unique user ID
+        let userID = fetchUserID(container: self.container)
+        let record_filename = userID + "__" + filename
+        log.info("Record filename: \(record_filename)")
+        
         // Set the record values, stores time and file data to record object
-        record.setValuesForKeys(["Time": time, "File": asset, "Filename": filename])
+        record.setValuesForKeys(["Time": time, "File": asset, "Filename": record_filename])
         
         // Check account status, handle gracefully
         self.container.accountStatus { accountStatus, error in
@@ -82,6 +90,7 @@ class CKUtils {
                 log.info("Account status available")
                 
                 // Check if record already exists
+                // Currently generates unique record each time, no need for check yet
                 // ....
                 
                 // Save record to public database

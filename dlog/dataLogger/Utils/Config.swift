@@ -9,7 +9,9 @@ import Logging
 let log = Logger(label: "")
 
 enum Config {
-    /// iCloud container identifier.
-    /// Update this if you wish to use your own iCloud container.
+    // Set the iCloud container identifier here - where it is uploaded to in cloudkit console
     static let containerIdentifier = "iCloud.com.Hoover.watchLog.watchkitapp.watchkitextension"
+    
+    // Define the header used for the csv file
+    static let CSVHeader = "Time,accx,accy,accz,gyrox,gyroy,gyroz\n"
 }

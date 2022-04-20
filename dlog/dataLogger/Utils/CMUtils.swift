@@ -23,6 +23,7 @@ struct sensorParam {
     var accz: Double
 }
 
+// Class CMutils implements functionality using CoreMotion framework
 class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate {
 
     let fileUtils = FileUtils()
@@ -42,8 +43,7 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
     // Documentation for setting up a background workout session found here
     // https://developer.apple.com/documentation/healthkit/workouts_and_activity_rings/running_workout_sessions
     func startWorkoutSession() {
-        log.info("hi")
-        print(">> Starting workout session >>")
+        log.info("Initializing new workout session")
         // if session is already started, do nothing
         if WKsession != nil {
             return
@@ -66,6 +66,7 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
         ]
 
         // Request authorization for those quantity types.
+        log.info("Requesting healthstore authorization ... ")
         self.healthStore.requestAuthorization(toShare: typesToShare, read: typesToRead, completion: { (success, error) in
                 guard success else {
                     fatalError("AUTHORIZATION ERROR: \(String(describing: error))")
@@ -116,25 +117,25 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
     
     // Ends the current background workout session and collection of data
     func endWorkoutSession() {
-        print("FCN >> Ending workout session >>")
+        log.info("Ending Workout Session ")
         WKsession!.stopActivity(with: Date())
         WKsession!.end()
         
         if(WKsession!.state == .ended) {
-            print("WORKOUT ENDED")
+            log.info("Workout ended.")
         } else {
-            print("WORKOUT STILL RUNNING")
+            log.info("Workout has not ended.")
         }
         
+        // Stop builder collection of healthstore data
         builder!.endCollection(withEnd: Date()) { (success, error) in
-            
             guard success else {
                 // Handle errors
                 fatalError("Unable to end builder data collection: \(String(describing: error))")
             }
             
+            // Let builder know to finish workout session
             self.builder!.finishWorkout { (workout, error) in
-                
                 guard workout != nil else {
                     // Handle errors
                     fatalError("Unable to finish builder workout: \(String(describing: error))")
@@ -196,7 +197,7 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
         if (WKsession == nil){
             return
         }
-        print("FCN >> Stopping updates >>")
+        log.info("Stopping device motion updates ...")
         
         manager.stopDeviceMotionUpdates()
         endWorkoutSession()
@@ -217,10 +218,11 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
         formatter.dateFormat = "HH:mm:ss.SSSS"
         
         // Option for returning unix time instead, unusued
-        let timeInterval = NSDate().timeIntervalSince1970
+        //let timeInterval = NSDate().timeIntervalSince1970
         //let time = String(timeInterval)
         
         //return time
+        log.info("Getting time: \(currentDateTime)")
         return formatter.string(from: currentDateTime)
     }
     

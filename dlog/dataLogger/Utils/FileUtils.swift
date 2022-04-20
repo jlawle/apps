@@ -7,12 +7,13 @@
 
 import Foundation
 
+// FileUtils implements fcns for file manipulation
 public class FileUtils {
     
     init() {}
     
     
-    // Retrieve the documents directory
+    // Retrieve the documents directory as a string
     func documentDirectory() -> String {
         // Returns array of strings
         let documentDirectory = NSSearchPathForDirectoriesInDomains(
@@ -85,29 +86,30 @@ public class FileUtils {
                        fileHandle.write(data)
                        fileHandle.closeFile()
                    }
-            //print("[added] \(info)")
         } else {
             // File DNE at path, adds header & info to new file
-            var csvHeader = "Time,accx,accy,accz,gyrox,gyroy,gyroz\n"
-            csvHeader.append(info)
-            //print("[header] \(csvHeader)")
+            var header = Config.CSVHeader
+            header.append(info)
             
+            // Attempt to create new file at provided fileURL
             do {
-                try csvHeader.write(to: fileURL as URL, atomically: true, encoding: String.Encoding.utf8)
+                try header.write(to: fileURL as URL,
+                                    atomically: true,
+                                    encoding: String.Encoding.utf8)
             } catch {
-                print("Failed to create file")
-                print("\(error)")
+                log.error("Failed to write file to fileURL: \(fileURL). Error: \(error)")
             }
         }
     }
     
+    // Function deletes a file at specified path string
     func deleteFile(withPath filePath: String) {
         let manager = FileManager.default
         if manager.fileExists(atPath: filePath) {
             try? manager.removeItem(atPath: filePath)
-            print("file deleted?")
+            log.info("File deleted at \(filePath)")
         } else {
-            print("file does not exist")
+            log.info("No file exists at \(filePath)")
         }
     }
     
@@ -118,15 +120,15 @@ public class FileUtils {
                 let filePath = pathComponent.path
                 let fileManager = FileManager.default
                 if fileManager.fileExists(atPath: filePath) {
-                    print("FILE AVAILABLE")
+                    log.info("File available at path: \(filePath)")
                     return true
                 } else {
-                    print("FILE NOT AVAILABLE")
+                    log.info("File unavailable at path: \(filePath)")
                     
                     return false
                 }
             } else {
-                print("FILE PATH NOT AVAILABLE")
+                log.info("File path unavailable with path component: \(name)")
                 return false
             }
         

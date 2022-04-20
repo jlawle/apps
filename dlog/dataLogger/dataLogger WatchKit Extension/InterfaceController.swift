@@ -48,26 +48,27 @@ class InterfaceController: WKInterfaceController {
     
     @IBAction func recordButtonPressed() {
         if(!logging) {
-            print("Start log button press")
-            // code to execute after "START LOG" button is pressed
+            
+            // Code to execute after "START LOG" button is pressed
+            log.info("Start log button pressed")
             logButton.setTitle("STOP LOG")
             logButton.setBackgroundColor(UIColor.red)
             logging = true
             
-            // sends function to execute on seperate thread, allowing button to update
-            // basically, without this, button won't change til after all logging is done
+            // Execute fcn on seperate thread s.t. button to updates its color
             logThread.async {
                 self.startLogging()
             }
             
         } else {
-            print("Stop log button press")
-            // code to execute after "STOP LOG" button is pressed
+            
+            // Code to execute after "STOP LOG" button is pressed
+            log.info("Stop log button pressed")
             logButton.setTitle("START LOG")
             logButton.setBackgroundColor(UIColor.green)
             logging = false
             
-            // sends function to seperate thread, allowing button to update.
+            // Sends function to seperate thread, allowing button to update.
             logThread.async {
                 self.stopLogging()
             }
@@ -76,21 +77,22 @@ class InterfaceController: WKInterfaceController {
     }
     
     func startLogging() {
-        print("Starting logging")
+        log.info("Starting logging ...")
         
         //  Create filename from Date, will be MM-dd-YYYY.csv
         let dateString = cmutils.getDate()
         fileName = dateString + ".csv"
         
         // Create file in directory, get path of file
-        filePath = fileUtils.getPath(inDirectory: fileUtils.documentDirectory(), withFileName: fileName)
+        filePath = fileUtils.getPath(inDirectory: fileUtils.documentDirectory(),
+                                     withFileName: fileName)
         
         // Start sending updates to file
         cmutils.startUpdates(sendTo: filePath)
     }
     
     func stopLogging() {
-        print("Stopping Logging")
+        log.info("Stopping logging ...")
         
         // Stop updating the file
         cmutils.stopUpdates()
@@ -100,25 +102,9 @@ class InterfaceController: WKInterfaceController {
         recordID.append(" \(cmutils.getTime())")
         
         // Create & save record
-        ckutils.saveRecord(filename: fileName, time: cmutils.getTime(), record: ckutils.createRecord(Type: "Motion", ID: recordID))
+        ckutils.saveRecord(filename: fileName,
+                           time: cmutils.getTime(),
+                           record: ckutils.createRecord(Type: "Motion", ID: recordID))
     }
-    
-    
-    // CAN BE DELETED, added different versions [getDate() and getTime() to CMUtils]
-    // Retrieve date and time
-//    func getTime() -> String {
-//        // get the current date and time
-//        let currentDateTime = Date()
-//
-//        // initialize the date formatter and set the style
-//        let formatter = DateFormatter()
-//
-//        // get the date time String from the date object
-//        formatter.timeStyle = .short
-//        formatter.dateStyle = .short
-//        let str = formatter.string(from: currentDateTime)
-//    
-//        return str
-//    }
    
 }
