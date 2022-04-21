@@ -8,9 +8,9 @@
 import Foundation
 import CloudKit
 
-
 // CKUtils implements creating/uploading of record to iCloud
 class CKUtils {
+    typealias FinishedUpload = () -> ()
     let fileUtils = FileUtils()
     var container: CKContainer
     var database: CKDatabase
@@ -32,28 +32,24 @@ class CKUtils {
                              recordID:      CKRecord.ID(recordName: ID))
     }
     
-    // Fetch user's iCloud ID
-    // Currently not working... cant seem to figure out how to 
-    func fetchUserID(container: CKContainer) -> String {
-        var id = String()
-        log.info("Fetching userID ... ")
-        self.container.fetchUserRecordID(completionHandler: {(recordID, error) -> Void in
-            // If recordID exists, save it
-            if error != nil {
-                log.error("\(String(describing: error?.localizedDescription))")
-            }
-            else if let name = recordID?.recordName {
-                log.info("iCloud ID: \(name), recordID is \(String(describing: recordID))")
-                id = recordID!.recordName as String
-                
-            }
-        })
-        log.info("id is \(id)")
-        return id
+    // Generate a new record filename to save to a record field
+    func generateRecordFileName() -> String {
+        
+        // Retrieve current Time and Date
+        let time = getTime(ms: false)
+        let currentDate = getDate()
+        
+        // Retrieve unique user ICloud ID
+        let userID = requestUserID()
+        // Format filename as DATE_TIME_USERID.csv
+        return currentDate + "_" + time + userID + ".csv"
     }
     
+    
     // Uploads a record to cloudkit with file path, timestamp and CKRecord
-    func saveRecord(filename: String, time: String, record: CKRecord) {
+    func saveRecord(record: CKRecord, completion: FinishedUpload) {
+        let container = CKContainer(identifier: Config.containerIdentifier)
+        let filename = Config.CSVFilename
         let asset: CKAsset
         
         // Check if file exists at url
@@ -75,16 +71,13 @@ class CKUtils {
             fatalError("Path unavailable")
         }
         
-        // Generate filename with added unique user ID
-        let userID = fetchUserID(container: self.container)
-        let record_filename = userID + "__" + filename
-        log.info("Record filename: \(record_filename)")
-        
         // Set the record values, stores time and file data to record object
-        record.setValuesForKeys(["Time": time, "File": asset, "Filename": record_filename])
+        record.setValuesForKeys(["Time": getTime(ms: false),
+                                 "File": asset,
+                                 "Filename": self.generateRecordFileName()])
         
         // Check account status, handle gracefully
-        self.container.accountStatus { accountStatus, error in
+        container.accountStatus { accountStatus, error in
             switch accountStatus {
             case .available:
                 log.info("Account status available")
@@ -114,6 +107,7 @@ class CKUtils {
                 fatalError("Error verifying account status: \(String(describing: error))")
             }
         }
+        completion()
     }
 }
     

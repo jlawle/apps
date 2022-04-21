@@ -30,37 +30,10 @@ public class FileUtils {
             pathURL.appendPathComponent(pathComponent)
             return pathURL.absoluteString
         } else {
-            print("errors with pathurl appending")
+            log.error("errors with pathurl appending")
         }
         
         return nil
-    }
-    
-    // UNUSED, CAN BE DELETED
-    // Basic function for saving a file to documents directory given text string
-    func save(text: String, toDirectory directory: String, withFileName fileName: String) -> String {
-        
-        
-        // Create the filepath by appending the filename
-        guard let filePath = self.append(toPath: directory, withPathComponent: fileName)
-        else {
-            // handle error here
-            print("Error with creating filepath ...")
-            return "nil"
-        }
-        
-        // Attempt to write data to file
-        do {
-            try text.write(toFile: filePath,
-                           atomically: true,
-                           encoding: .utf8)
-        } catch let error as NSError {
-            print("Error writing file: ", error)
-            return "nil"
-        }
-        
-        print("Save successful")
-        return filePath
     }
     
     // split save file into two fns (get path & update CSV), can prob combine some way but it works
@@ -68,14 +41,22 @@ public class FileUtils {
         guard let filePath = self.append(toPath: directory, withPathComponent: fileName)
         else {
             // handle error here
-            print("Error with creating filepath ...")
+            log.error("Error with creating filepath ...")
             return "nil"
         }
         return filePath
     }
     
     // Updates CSV file at URL w info (encodes info: string  into data)
-    func updtateCSV(atURL fileURL: NSURL, withInfo info: String) {
+    func updtateCSV(filename: String, withInfo info: String) {
+        
+        // Create file in directory, get path of file
+        let filePath = self.getPath(inDirectory: self.documentDirectory(),
+                                     withFileName: filename)
+        
+        // Generate url to filepath
+        let fileURL = NSURL(fileURLWithPath: filePath)
+        
         
         guard let data = info.data(using: String.Encoding.utf8) else {return}
        
@@ -103,7 +84,12 @@ public class FileUtils {
     }
     
     // Function deletes a file at specified path string
-    func deleteFile(withPath filePath: String) {
+    func deleteFile(filename: String) {
+         
+        // Get path from filename
+        let filePath = self.getPath(inDirectory: self.documentDirectory(),
+                                     withFileName: filename)
+        
         let manager = FileManager.default
         if manager.fileExists(atPath: filePath) {
             try? manager.removeItem(atPath: filePath)

@@ -156,10 +156,8 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
     }
     
     // Begins data retrieval from sensors and appends to csv file in background
-    func startUpdates(sendTo filePath: String) {
-        
+    func startUpdates(filename: String) {
         startWorkoutSession()
-        let url = NSURL(fileURLWithPath: filePath)
 
         // Verify device-motion service is available on device
         if !manager.isDeviceMotionAvailable {
@@ -184,9 +182,9 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
                 sensorData.gyroy = data!.rotationRate.y
                 sensorData.gyroz = data!.rotationRate.z
                 
-                sensorData.time = self.getTime()
+                sensorData.time = getTime(ms: true)
                 let sortedData = self.sortData(usingData: sensorData)
-                self.fileUtils.updtateCSV(atURL: url, withInfo: sortedData)
+                self.fileUtils.updtateCSV(filename: filename, withInfo: sortedData)
             }
         }
         
@@ -209,30 +207,6 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
         return "\(params.time),\(params.accx),\(params.accy),\(params.accz),\(params.gyrox),\(params.gyroy),\(params.gyroz)\n"
     }
     
-    // Retrieve current Timestamp as string
-    func getTime() -> String {
-        let currentDateTime = Date()
-        
-        // "HH" indicates 24-hour, "hh" 12-hour, "SSSS" for ms
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm:ss.SSSS"
-        
-        // Option for returning unix time instead, unusued
-        //let timeInterval = NSDate().timeIntervalSince1970
-        //let time = String(timeInterval)
-        
-        //return time
-        log.info("Getting time: \(currentDateTime)")
-        return formatter.string(from: currentDateTime)
-    }
-    
-    // Retrieve current date as string
-    func getDate() -> String {
-        let currentDateTime = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM-dd-YYYY"
-        return formatter.string(from: currentDateTime)
-    }
     
     // Extra stubs&methods needed (code inside is suggested from apple dev forums,
     // but we dont end up using any of it

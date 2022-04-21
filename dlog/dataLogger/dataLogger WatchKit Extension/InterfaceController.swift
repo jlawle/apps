@@ -43,7 +43,7 @@ class InterfaceController: WKInterfaceController {
         // deletes whatever file was made that date from documents directory
         // press AFTER file has been uploaded to cloudkit, this is a temp utility
         // function so we do not overcrowd the documents directory
-        fileUtils.deleteFile(withPath: filePath)
+        //fileUtils.deleteFile(withPath: filePath)
     }
     
     @IBAction func recordButtonPressed() {
@@ -79,16 +79,8 @@ class InterfaceController: WKInterfaceController {
     func startLogging() {
         log.info("Starting logging ...")
         
-        //  Create filename from Date, will be MM-dd-YYYY.csv
-        let dateString = cmutils.getDate()
-        fileName = dateString + ".csv"
-        
-        // Create file in directory, get path of file
-        filePath = fileUtils.getPath(inDirectory: fileUtils.documentDirectory(),
-                                     withFileName: fileName)
-        
         // Start sending updates to file
-        cmutils.startUpdates(sendTo: filePath)
+        cmutils.startUpdates(filename: Config.CSVFilename)
     }
     
     func stopLogging() {
@@ -98,13 +90,14 @@ class InterfaceController: WKInterfaceController {
         cmutils.stopUpdates()
         
         // create record ID from date & time
-        var recordID = cmutils.getDate()
-        recordID.append(" \(cmutils.getTime())")
+        var recordID = getDate()
+        recordID.append("_\(getTime(ms: false))")
         
         // Create & save record
-        ckutils.saveRecord(filename: fileName,
-                           time: cmutils.getTime(),
-                           record: ckutils.createRecord(Type: "Motion", ID: recordID))
+        ckutils.saveRecord(record: ckutils.createRecord(Type: "Motion",ID: recordID), completion: {() -> () in
+                // Delete our file in documents directory
+                //fileUtils.deleteFile(filename: Config.CSVFilename)
+        })
     }
    
 }
