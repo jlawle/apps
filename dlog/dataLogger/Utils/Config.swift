@@ -10,6 +10,8 @@ import UIKit
 
 let log = Logger(label: "")
 
+public var samplingRate = 15
+
 enum Config {
     // Set the iCloud container identifier here - where it is uploaded to in cloudkit console
     static let containerIdentifier = "iCloud.com.Hoover.watchLog.watchkitapp.watchkitextension"
@@ -28,6 +30,8 @@ enum UserRecordIDResponse {
     case failure(error: Error)
     case unavailable(accountStatus: CKAccountStatus)
 }
+
+//struct for transmitting setting data
 
 
 // Implements retrieval of the iCloud container ID for a specific user

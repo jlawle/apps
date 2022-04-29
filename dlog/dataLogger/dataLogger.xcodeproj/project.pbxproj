@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F2C14D02818740900CCE72D /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2C14CF2818740500CCE72D /* SettingsController.swift */; };
 		1FA7D12A27EB8EEF001DA0DA /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA7D12927EB8EEF001DA0DA /* HealthKit.framework */; };
 		1FC265A027EA2A7D0015D212 /* CMUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC2659F27EA2A7D0015D212 /* CMUtils.swift */; };
 		E50432FB27F7B6A3008973E4 /* dataLogger WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E51166F627CD670E002B017D /* dataLogger WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -85,6 +86,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1F2C14CF2818740500CCE72D /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		1F2C14D128188A7800CCE72D /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.5.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		1FA7D12927EB8EEF001DA0DA /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.5.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		1FC2659F27EA2A7D0015D212 /* CMUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMUtils.swift; sourceTree = "<group>"; };
 		E51166E427CD670B002B017D /* dataLogger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dataLogger.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				E511673027CD6767002B017D /* dataLogger WatchKit Extension.entitlements */,
+				1F2C14CF2818740500CCE72D /* SettingsController.swift */,
 				E51166FB27CD670E002B017D /* InterfaceController.swift */,
 				E51166FD27CD670E002B017D /* ExtensionDelegate.swift */,
 				E51166FF27CD670E002B017D /* NotificationController.swift */,
@@ -208,6 +212,7 @@
 		E511673127CD6770002B017D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F2C14D128188A7800CCE72D /* CloudKit.framework */,
 				1FA7D12927EB8EEF001DA0DA /* HealthKit.framework */,
 				E511673227CD6770002B017D /* CloudKit.framework */,
 			);
@@ -243,6 +248,7 @@
 			name = dataLogger;
 			packageProductDependencies = (
 				E5C61DF6280E465300CA6F40 /* Logging */,
+				1F2C14D328188B8300CCE72D /* Logging */,
 			);
 			productName = dataLogger;
 			productReference = E51166E427CD670B002B017D /* dataLogger.app */;
@@ -363,6 +369,7 @@
 			mainGroup = E51166DD27CD670B002B017D;
 			packageReferences = (
 				E5C61DF5280E465300CA6F40 /* XCRemoteSwiftPackageReference "swift-log" */,
+				1F2C14D228188B8300CCE72D /* XCRemoteSwiftPackageReference "swift-log" */,
 			);
 			productRefGroup = E51166E527CD670B002B017D /* Products */;
 			projectDirPath = "";
@@ -423,6 +430,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F2C14D02818740900CCE72D /* SettingsController.swift in Sources */,
 				E511670027CD670E002B017D /* NotificationController.swift in Sources */,
 				1FC265A027EA2A7D0015D212 /* CMUtils.swift in Sources */,
 				E511670227CD670E002B017D /* ComplicationController.swift in Sources */,
@@ -914,6 +922,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1F2C14D228188B8300CCE72D /* XCRemoteSwiftPackageReference "swift-log" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-log";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		E5C61DF5280E465300CA6F40 /* XCRemoteSwiftPackageReference "swift-log" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-log";
@@ -925,6 +941,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1F2C14D328188B8300CCE72D /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5C61DF5280E465300CA6F40 /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
+		};
 		E54ECCAE280F16B200C1E556 /* Logging */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E5C61DF5280E465300CA6F40 /* XCRemoteSwiftPackageReference "swift-log" */;

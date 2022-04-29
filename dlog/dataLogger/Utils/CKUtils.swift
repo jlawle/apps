@@ -93,7 +93,8 @@ class CKUtils {
                     } else {
                         // Saved record
                         log.info("Record saved. Record info: \(String(describing: record))")
-                        }
+                        FileUtils().deleteFile(filename: Config.CSVFilename)
+                    }
                 })
             case .couldNotDetermine:
                 log.info("Cannot determine account status")

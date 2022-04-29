@@ -7,10 +7,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="20006"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--mainController-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="dataLogger_WatchKit_App" customModuleProvider="target">
+                <controller identifier="mainController" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="dataLogger_WatchKit_App" customModuleProvider="target">
                     <items>
                         <button width="1" alignment="center" verticalAlignment="center" title="START LOG" id="E8g-zu-bzW" userLabel="logButton">
                             <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -19,9 +19,9 @@
                                 <action selector="recordButtonPressed" destination="AgC-eL-Hgc" id="WoA-dD-972"/>
                             </connections>
                         </button>
-                        <button width="1" alignment="left" title="delete temp file" id="axu-lp-zGP">
+                        <button width="1" alignment="left" title="Settings..." id="jvK-Hq-caI">
                             <connections>
-                                <action selector="deleteTempButtonPressed" destination="AgC-eL-Hgc" id="rHs-oy-CU2"/>
+                                <segue destination="Vc6-ls-qyI" kind="push" identifier="settingsSegue" id="UOB-tW-ler"/>
                             </connections>
                         </button>
                     </items>
@@ -32,36 +32,32 @@
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
         </scene>
-        <!--Static Notification Interface Controller-->
-        <scene sceneID="AEw-b0-oYE">
+        <!--Settings Controller-->
+        <scene sceneID="IBm-sq-sUN">
             <objects>
-                <notificationController id="YCC-NB-fut">
+                <controller id="Vc6-ls-qyI" customClass="SettingsController" customModule="dataLogger_WatchKit_Extension">
                     <items>
-                        <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
+                        <label alignment="center" text="Sampling Rate:" id="a5r-Nm-E6m">
+                            <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                        </label>
+                        <picker height="45" alignment="left" focusStyle="stack" indicatorMode="shownWhileFocused" id="SzT-qI-Ntg">
+                            <connections>
+                                <action selector="PickerChanged:" destination="Vc6-ls-qyI" id="hrB-bP-8e6"/>
+                            </connections>
+                        </picker>
+                        <button width="1" alignment="left" title="Save Settings" id="Max-n6-KwE">
+                            <connections>
+                                <action selector="DoneButtonPressed:" destination="Vc6-ls-qyI" id="5Qz-ye-yt0"/>
+                            </connections>
+                        </button>
                     </items>
-                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
                     <connections>
-                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
-                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
-                        <segue destination="eXb-UN-Cd0" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="mpB-YA-K8N"/>
+                        <outlet property="picker" destination="SzT-qI-Ntg" id="jy6-TI-zn1"/>
+                        <outlet property="sampRateLabel" destination="a5r-Nm-E6m" id="W4o-w3-d1N"/>
                     </connections>
-                </notificationController>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="643"/>
-        </scene>
-        <!--Notification Controller-->
-        <scene sceneID="ZPc-GJ-vnh">
-            <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="dataLogger_WatchKit_App" customModuleProvider="target"/>
-            </objects>
-            <point key="canvasLocation" x="468" y="643"/>
-        </scene>
-        <!--Notification Controller-->
-        <scene sceneID="Niz-AI-uX2">
-            <objects>
-                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="dataLogger_WatchKit_App" customModuleProvider="target"/>
-            </objects>
-            <point key="canvasLocation" x="468" y="345"/>
+            <point key="canvasLocation" x="497" y="338"/>
         </scene>
     </scenes>
 </document>

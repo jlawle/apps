@@ -9,6 +9,7 @@ import WatchKit
 import Foundation
 import CloudKit
 import CoreMotion
+import UIKit
 
 class InterfaceController: WKInterfaceController {
     
@@ -29,7 +30,13 @@ class InterfaceController: WKInterfaceController {
     
     override func awake(withContext context: Any?) {
         // Configure interface objects here.
+        //guard let settings = context else {return}
+//        if(context != nil) {
+//
+//            print("frequency: \(String(describing: (context as! settingData).samplingRate))")
+//        }
     }
+    
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
@@ -38,13 +45,7 @@ class InterfaceController: WKInterfaceController {
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
     }
-
-    @IBAction func deleteTempButtonPressed() {
-        // deletes whatever file was made that date from documents directory
-        // press AFTER file has been uploaded to cloudkit, this is a temp utility
-        // function so we do not overcrowd the documents directory
-        //fileUtils.deleteFile(withPath: filePath)
-    }
+    
     
     @IBAction func recordButtonPressed() {
         if(!logging) {

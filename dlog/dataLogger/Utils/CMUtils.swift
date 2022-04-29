@@ -34,14 +34,15 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
     var WKsession: HKWorkoutSession? = nil
     var builder: HKLiveWorkoutBuilder? = nil
     
-    let interval = 1.0/15.0   //sampling interval, may change
+   // let interval = 1.0/Double(samplingRate)
     
     
     override init() {}
     
     // Requests healthstore access, establishes bckgnd session to record sensor data
     // Documentation for setting up a background workout session found here
-    // https://developer.apple.com/documentation/healthkit/workouts_and_activity_rings/running_workout_sessions
+    //https://developer.apple.com/documentation/healthkit/workouts_and_activity_rings/running_workout_sessions
+    
     func startWorkoutSession() {
         log.info("Initializing new workout session")
         // if session is already started, do nothing
@@ -60,14 +61,14 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
 
         // The quantity types to read from the health store.
         // Neccesary object, however these data are unused for sensor recording purposes.
-        let typesToRead: Set = [
-            HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
-            //HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!
-        ]
+//        let typesToRead: Set = [
+//            // HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
+//            //HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!
+//        ]
 
         // Request authorization for those quantity types.
         log.info("Requesting healthstore authorization ... ")
-        self.healthStore.requestAuthorization(toShare: typesToShare, read: typesToRead, completion: { (success, error) in
+        self.healthStore.requestAuthorization(toShare: typesToShare, read: nil, completion: { (success, error) in
                 guard success else {
                     fatalError("AUTHORIZATION ERROR: \(String(describing: error))")
                 }
@@ -165,6 +166,8 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
         }
 
         // Set sampling rate
+        let interval = 1/Double(samplingRate)
+        
         manager.deviceMotionUpdateInterval = interval
         
         // Continually gets motion data and updates CSV file
