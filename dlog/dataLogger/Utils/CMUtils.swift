@@ -59,13 +59,6 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
             HKQuantityType.workoutType()
         ]
 
-        // The quantity types to read from the health store.
-        // Neccesary object, however these data are unused for sensor recording purposes.
-//        let typesToRead: Set = [
-//            // HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned)!,
-//            //HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning)!
-//        ]
-
         // Request authorization for those quantity types.
         log.info("Requesting healthstore authorization ... ")
         self.healthStore.requestAuthorization(toShare: typesToShare, read: nil, completion: { (success, error) in
@@ -110,9 +103,6 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
                     log.info("Workout activity started, builder has begun collection")
                 }
         })
-
-        
-       
 
     }
     

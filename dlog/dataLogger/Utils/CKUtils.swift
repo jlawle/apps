@@ -93,7 +93,13 @@ class CKUtils {
                     } else {
                         // Saved record
                         log.info("Record saved. Record info: \(String(describing: record))")
+                        
+                        // Delete temporary csv file from watch directory
+                        log.info("Removing file from watch...")
                         FileUtils().deleteFile(filename: Config.CSVFilename)
+                        
+                        // Verify file was deleted
+                        _ = FileUtils().checkFile(name: Config.CSVFilename)
                     }
                 })
             case .couldNotDetermine:
