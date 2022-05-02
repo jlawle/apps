@@ -1,0 +1,962 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1F2C14D02818740900CCE72D /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2C14CF2818740500CCE72D /* SettingsController.swift */; };
+		1FA7D12A27EB8EEF001DA0DA /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA7D12927EB8EEF001DA0DA /* HealthKit.framework */; };
+		1FC265A027EA2A7D0015D212 /* CMUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC2659F27EA2A7D0015D212 /* CMUtils.swift */; };
+		E50432FB27F7B6A3008973E4 /* dataLogger WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E51166F627CD670E002B017D /* dataLogger WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E51166E927CD670B002B017D /* dataLogger WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E51166E827CD670B002B017D /* dataLogger WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E51166EF27CD670B002B017D /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E51166ED27CD670B002B017D /* Interface.storyboard */; };
+		E51166F127CD670D002B017D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E51166F027CD670D002B017D /* Assets.xcassets */; };
+		E51166FC27CD670E002B017D /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51166FB27CD670E002B017D /* InterfaceController.swift */; };
+		E51166FE27CD670E002B017D /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51166FD27CD670E002B017D /* ExtensionDelegate.swift */; };
+		E511670027CD670E002B017D /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51166FF27CD670E002B017D /* NotificationController.swift */; };
+		E511670227CD670E002B017D /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E511670127CD670E002B017D /* ComplicationController.swift */; };
+		E511670427CD670F002B017D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E511670327CD670F002B017D /* Assets.xcassets */; };
+		E511671027CD670F002B017D /* dataLoggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E511670F27CD670F002B017D /* dataLoggerTests.swift */; };
+		E511671A27CD670F002B017D /* dataLoggerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E511671927CD670F002B017D /* dataLoggerUITests.swift */; };
+		E511671C27CD670F002B017D /* dataLoggerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E511671B27CD670F002B017D /* dataLoggerUITestsLaunchTests.swift */; };
+		E511673327CD6770002B017D /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E511673227CD6770002B017D /* CloudKit.framework */; };
+		E511673727D6A003002B017D /* FileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E511673627D6A003002B017D /* FileUtils.swift */; };
+		E511673A27DC0AA7002B017D /* CKUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E511673927DC0AA7002B017D /* CKUtils.swift */; };
+		E511673C27DC0BBD002B017D /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E511673B27DC0BBD002B017D /* Config.swift */; };
+		E54ECCAF280F16B200C1E556 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = E54ECCAE280F16B200C1E556 /* Logging */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E51166EA27CD670B002B017D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E51166DE27CD670B002B017D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E51166E727CD670B002B017D;
+			remoteInfo = "dataLogger WatchKit App";
+		};
+		E51166F827CD670E002B017D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E51166DE27CD670B002B017D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E51166F527CD670E002B017D;
+			remoteInfo = "dataLogger WatchKit Extension";
+		};
+		E511670C27CD670F002B017D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E51166DE27CD670B002B017D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E51166F527CD670E002B017D;
+			remoteInfo = "dataLogger WatchKit Extension";
+		};
+		E511671627CD670F002B017D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E51166DE27CD670B002B017D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E51166E727CD670B002B017D;
+			remoteInfo = "dataLogger WatchKit App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E511672227CD670F002B017D /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E50432FB27F7B6A3008973E4 /* dataLogger WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E511672627CD670F002B017D /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				E51166E927CD670B002B017D /* dataLogger WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1F2C14CF2818740500CCE72D /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		1F2C14D128188A7800CCE72D /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.5.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
+		1FA7D12927EB8EEF001DA0DA /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.5.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		1FC2659F27EA2A7D0015D212 /* CMUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMUtils.swift; sourceTree = "<group>"; };
+		E51166E427CD670B002B017D /* dataLogger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dataLogger.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E51166E827CD670B002B017D /* dataLogger WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dataLogger WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E51166EE27CD670B002B017D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		E51166F027CD670D002B017D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E51166F627CD670E002B017D /* dataLogger WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "dataLogger WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E51166FB27CD670E002B017D /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		E51166FD27CD670E002B017D /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		E51166FF27CD670E002B017D /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		E511670127CD670E002B017D /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		E511670327CD670F002B017D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E511670527CD670F002B017D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E511670627CD670F002B017D /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		E511670B27CD670F002B017D /* dataLoggerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dataLoggerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E511670F27CD670F002B017D /* dataLoggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataLoggerTests.swift; sourceTree = "<group>"; };
+		E511671527CD670F002B017D /* dataLoggerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dataLoggerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E511671927CD670F002B017D /* dataLoggerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataLoggerUITests.swift; sourceTree = "<group>"; };
+		E511671B27CD670F002B017D /* dataLoggerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataLoggerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E511673027CD6767002B017D /* dataLogger WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "dataLogger WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		E511673227CD6770002B017D /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.3.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
+		E511673627D6A003002B017D /* FileUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtils.swift; sourceTree = "<group>"; };
+		E511673927DC0AA7002B017D /* CKUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKUtils.swift; sourceTree = "<group>"; };
+		E511673B27DC0BBD002B017D /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E51166F327CD670E002B017D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E54ECCAF280F16B200C1E556 /* Logging in Frameworks */,
+				E511673327CD6770002B017D /* CloudKit.framework in Frameworks */,
+				1FA7D12A27EB8EEF001DA0DA /* HealthKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E511670827CD670F002B017D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E511671227CD670F002B017D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E51166DD27CD670B002B017D = {
+			isa = PBXGroup;
+			children = (
+				E511673827D6A02F002B017D /* Utils */,
+				E51166EC27CD670B002B017D /* dataLogger WatchKit App */,
+				E51166FA27CD670E002B017D /* dataLogger WatchKit Extension */,
+				E511670E27CD670F002B017D /* dataLoggerTests */,
+				E511671827CD670F002B017D /* dataLoggerUITests */,
+				E51166E527CD670B002B017D /* Products */,
+				E511673127CD6770002B017D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E51166E527CD670B002B017D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E51166E427CD670B002B017D /* dataLogger.app */,
+				E51166E827CD670B002B017D /* dataLogger WatchKit App.app */,
+				E51166F627CD670E002B017D /* dataLogger WatchKit Extension.appex */,
+				E511670B27CD670F002B017D /* dataLoggerTests.xctest */,
+				E511671527CD670F002B017D /* dataLoggerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E51166EC27CD670B002B017D /* dataLogger WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				E51166ED27CD670B002B017D /* Interface.storyboard */,
+				E51166F027CD670D002B017D /* Assets.xcassets */,
+			);
+			path = "dataLogger WatchKit App";
+			sourceTree = "<group>";
+		};
+		E51166FA27CD670E002B017D /* dataLogger WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E511673027CD6767002B017D /* dataLogger WatchKit Extension.entitlements */,
+				1F2C14CF2818740500CCE72D /* SettingsController.swift */,
+				E51166FB27CD670E002B017D /* InterfaceController.swift */,
+				E51166FD27CD670E002B017D /* ExtensionDelegate.swift */,
+				E51166FF27CD670E002B017D /* NotificationController.swift */,
+				E511670127CD670E002B017D /* ComplicationController.swift */,
+				E511670327CD670F002B017D /* Assets.xcassets */,
+				E511670527CD670F002B017D /* Info.plist */,
+				E511670627CD670F002B017D /* PushNotificationPayload.apns */,
+			);
+			path = "dataLogger WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		E511670E27CD670F002B017D /* dataLoggerTests */ = {
+			isa = PBXGroup;
+			children = (
+				E511670F27CD670F002B017D /* dataLoggerTests.swift */,
+			);
+			path = dataLoggerTests;
+			sourceTree = "<group>";
+		};
+		E511671827CD670F002B017D /* dataLoggerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E511671927CD670F002B017D /* dataLoggerUITests.swift */,
+				E511671B27CD670F002B017D /* dataLoggerUITestsLaunchTests.swift */,
+			);
+			path = dataLoggerUITests;
+			sourceTree = "<group>";
+		};
+		E511673127CD6770002B017D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F2C14D128188A7800CCE72D /* CloudKit.framework */,
+				1FA7D12927EB8EEF001DA0DA /* HealthKit.framework */,
+				E511673227CD6770002B017D /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E511673827D6A02F002B017D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E511673627D6A003002B017D /* FileUtils.swift */,
+				E511673927DC0AA7002B017D /* CKUtils.swift */,
+				E511673B27DC0BBD002B017D /* Config.swift */,
+				1FC2659F27EA2A7D0015D212 /* CMUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E51166E327CD670B002B017D /* dataLogger */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E511672727CD670F002B017D /* Build configuration list for PBXNativeTarget "dataLogger" */;
+			buildPhases = (
+				E51166E227CD670B002B017D /* Resources */,
+				E511672627CD670F002B017D /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E51166EB27CD670B002B017D /* PBXTargetDependency */,
+			);
+			name = dataLogger;
+			packageProductDependencies = (
+				E5C61DF6280E465300CA6F40 /* Logging */,
+				1F2C14D328188B8300CCE72D /* Logging */,
+			);
+			productName = dataLogger;
+			productReference = E51166E427CD670B002B017D /* dataLogger.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		E51166E727CD670B002B017D /* dataLogger WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E511672327CD670F002B017D /* Build configuration list for PBXNativeTarget "dataLogger WatchKit App" */;
+			buildPhases = (
+				E51166E627CD670B002B017D /* Resources */,
+				E511672227CD670F002B017D /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E51166F927CD670E002B017D /* PBXTargetDependency */,
+			);
+			name = "dataLogger WatchKit App";
+			productName = "dataLogger WatchKit App";
+			productReference = E51166E827CD670B002B017D /* dataLogger WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		E51166F527CD670E002B017D /* dataLogger WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E511671F27CD670F002B017D /* Build configuration list for PBXNativeTarget "dataLogger WatchKit Extension" */;
+			buildPhases = (
+				E51166F227CD670E002B017D /* Sources */,
+				E51166F327CD670E002B017D /* Frameworks */,
+				E51166F427CD670E002B017D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "dataLogger WatchKit Extension";
+			packageProductDependencies = (
+				E54ECCAE280F16B200C1E556 /* Logging */,
+			);
+			productName = "dataLogger WatchKit Extension";
+			productReference = E51166F627CD670E002B017D /* dataLogger WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+		E511670A27CD670F002B017D /* dataLoggerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E511672A27CD670F002B017D /* Build configuration list for PBXNativeTarget "dataLoggerTests" */;
+			buildPhases = (
+				E511670727CD670F002B017D /* Sources */,
+				E511670827CD670F002B017D /* Frameworks */,
+				E511670927CD670F002B017D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E511670D27CD670F002B017D /* PBXTargetDependency */,
+			);
+			name = dataLoggerTests;
+			productName = dataLoggerTests;
+			productReference = E511670B27CD670F002B017D /* dataLoggerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E511671427CD670F002B017D /* dataLoggerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E511672D27CD670F002B017D /* Build configuration list for PBXNativeTarget "dataLoggerUITests" */;
+			buildPhases = (
+				E511671127CD670F002B017D /* Sources */,
+				E511671227CD670F002B017D /* Frameworks */,
+				E511671327CD670F002B017D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E511671727CD670F002B017D /* PBXTargetDependency */,
+			);
+			name = dataLoggerUITests;
+			productName = dataLoggerUITests;
+			productReference = E511671527CD670F002B017D /* dataLoggerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E51166DE27CD670B002B017D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					E51166E327CD670B002B017D = {
+						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
+					};
+					E51166E727CD670B002B017D = {
+						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
+					};
+					E51166F527CD670E002B017D = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					E511670A27CD670F002B017D = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = E51166F527CD670E002B017D;
+					};
+					E511671427CD670F002B017D = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = E51166E727CD670B002B017D;
+					};
+				};
+			};
+			buildConfigurationList = E51166E127CD670B002B017D /* Build configuration list for PBXProject "dataLogger" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E51166DD27CD670B002B017D;
+			packageReferences = (
+				E5C61DF5280E465300CA6F40 /* XCRemoteSwiftPackageReference "swift-log" */,
+				1F2C14D228188B8300CCE72D /* XCRemoteSwiftPackageReference "swift-log" */,
+			);
+			productRefGroup = E51166E527CD670B002B017D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E51166E327CD670B002B017D /* dataLogger */,
+				E51166E727CD670B002B017D /* dataLogger WatchKit App */,
+				E51166F527CD670E002B017D /* dataLogger WatchKit Extension */,
+				E511670A27CD670F002B017D /* dataLoggerTests */,
+				E511671427CD670F002B017D /* dataLoggerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E51166E227CD670B002B017D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E51166E627CD670B002B017D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E51166F127CD670D002B017D /* Assets.xcassets in Resources */,
+				E51166EF27CD670B002B017D /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E51166F427CD670E002B017D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E511670427CD670F002B017D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E511670927CD670F002B017D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E511671327CD670F002B017D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E51166F227CD670E002B017D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F2C14D02818740900CCE72D /* SettingsController.swift in Sources */,
+				E511670027CD670E002B017D /* NotificationController.swift in Sources */,
+				1FC265A027EA2A7D0015D212 /* CMUtils.swift in Sources */,
+				E511670227CD670E002B017D /* ComplicationController.swift in Sources */,
+				E51166FE27CD670E002B017D /* ExtensionDelegate.swift in Sources */,
+				E511673C27DC0BBD002B017D /* Config.swift in Sources */,
+				E511673A27DC0AA7002B017D /* CKUtils.swift in Sources */,
+				E51166FC27CD670E002B017D /* InterfaceController.swift in Sources */,
+				E511673727D6A003002B017D /* FileUtils.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E511670727CD670F002B017D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E511671027CD670F002B017D /* dataLoggerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E511671127CD670F002B017D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E511671C27CD670F002B017D /* dataLoggerUITestsLaunchTests.swift in Sources */,
+				E511671A27CD670F002B017D /* dataLoggerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E51166EB27CD670B002B017D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E51166E727CD670B002B017D /* dataLogger WatchKit App */;
+			targetProxy = E51166EA27CD670B002B017D /* PBXContainerItemProxy */;
+		};
+		E51166F927CD670E002B017D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E51166F527CD670E002B017D /* dataLogger WatchKit Extension */;
+			targetProxy = E51166F827CD670E002B017D /* PBXContainerItemProxy */;
+		};
+		E511670D27CD670F002B017D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E51166F527CD670E002B017D /* dataLogger WatchKit Extension */;
+			targetProxy = E511670C27CD670F002B017D /* PBXContainerItemProxy */;
+		};
+		E511671727CD670F002B017D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E51166E727CD670B002B017D /* dataLogger WatchKit App */;
+			targetProxy = E511671627CD670F002B017D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E51166ED27CD670B002B017D /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E51166EE27CD670B002B017D /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E511671D27CD670F002B017D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E511671E27CD670F002B017D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E511672027CD670F002B017D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "dataLogger WatchKit Extension/dataLogger WatchKit Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = EDHRW4QH65;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "dataLogger WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "dataLogger WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = dataLogger_WatchKit_Extension.ComplicationController;
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "update gyro and accell data";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_WKExtensionDelegateClassName = dataLogger_WatchKit_Extension.ExtensionDelegate;
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Hoover.dataLogger.dataLogger.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Debug;
+		};
+		E511672127CD670F002B017D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "dataLogger WatchKit Extension/dataLogger WatchKit Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = EDHRW4QH65;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "dataLogger WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "dataLogger WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = dataLogger_WatchKit_Extension.ComplicationController;
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "update gyro and accell data";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_WKExtensionDelegateClassName = dataLogger_WatchKit_Extension.ExtensionDelegate;
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Hoover.dataLogger.dataLogger.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Release;
+		};
+		E511672427CD670F002B017D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = EDHRW4QH65;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = dataLogger_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = "dataLogger WatchKit App";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Hoover.dataLogger.dataLogger.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "dataLogger WatchKit Extension/dataLogger WatchKit App-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Debug;
+		};
+		E511672527CD670F002B017D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = EDHRW4QH65;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = dataLogger_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = "dataLogger WatchKit App";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Hoover.dataLogger.dataLogger.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "dataLogger WatchKit Extension/dataLogger WatchKit App-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
+			};
+			name = Release;
+		};
+		E511672827CD670F002B017D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = EDHRW4QH65;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Hoover.dataLogger;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "dataLogger WatchKit Extension/dataLogger-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		E511672927CD670F002B017D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = EDHRW4QH65;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Hoover.dataLogger;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "dataLogger WatchKit Extension/dataLogger-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		E511672B27CD670F002B017D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = EDHRW4QH65;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Hoover.dataLogger.dataLoggerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dataLogger WatchKit Extension.appex/dataLogger WatchKit Extension";
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+			};
+			name = Debug;
+		};
+		E511672C27CD670F002B017D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = EDHRW4QH65;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Hoover.dataLogger.dataLoggerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dataLogger WatchKit Extension.appex/dataLogger WatchKit Extension";
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+			};
+			name = Release;
+		};
+		E511672E27CD670F002B017D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = EDHRW4QH65;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Hoover.dataLogger.dataLoggerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "dataLogger WatchKit App";
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+			};
+			name = Debug;
+		};
+		E511672F27CD670F002B017D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = EDHRW4QH65;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Hoover.dataLogger.dataLoggerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "dataLogger WatchKit App";
+				WATCHOS_DEPLOYMENT_TARGET = 8.3;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E51166E127CD670B002B017D /* Build configuration list for PBXProject "dataLogger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E511671D27CD670F002B017D /* Debug */,
+				E511671E27CD670F002B017D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E511671F27CD670F002B017D /* Build configuration list for PBXNativeTarget "dataLogger WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E511672027CD670F002B017D /* Debug */,
+				E511672127CD670F002B017D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E511672327CD670F002B017D /* Build configuration list for PBXNativeTarget "dataLogger WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E511672427CD670F002B017D /* Debug */,
+				E511672527CD670F002B017D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E511672727CD670F002B017D /* Build configuration list for PBXNativeTarget "dataLogger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E511672827CD670F002B017D /* Debug */,
+				E511672927CD670F002B017D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E511672A27CD670F002B017D /* Build configuration list for PBXNativeTarget "dataLoggerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E511672B27CD670F002B017D /* Debug */,
+				E511672C27CD670F002B017D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E511672D27CD670F002B017D /* Build configuration list for PBXNativeTarget "dataLoggerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E511672E27CD670F002B017D /* Debug */,
+				E511672F27CD670F002B017D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1F2C14D228188B8300CCE72D /* XCRemoteSwiftPackageReference "swift-log" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-log";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		E5C61DF5280E465300CA6F40 /* XCRemoteSwiftPackageReference "swift-log" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-log";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1F2C14D328188B8300CCE72D /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5C61DF5280E465300CA6F40 /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
+		};
+		E54ECCAE280F16B200C1E556 /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5C61DF5280E465300CA6F40 /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
+		};
+		E5C61DF6280E465300CA6F40 /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5C61DF5280E465300CA6F40 /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = E51166DE27CD670B002B017D /* Project object */;
+}

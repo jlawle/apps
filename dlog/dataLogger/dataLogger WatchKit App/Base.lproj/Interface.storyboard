@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="20037" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38"/>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="20006"/>
+    </dependencies>
+    <scenes>
+        <!--mainController-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller identifier="mainController" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="dataLogger_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <button width="1" alignment="center" verticalAlignment="center" title="START LOG" id="E8g-zu-bzW" userLabel="logButton">
+                            <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="font" type="boldSystem" pointSize="15"/>
+                            <connections>
+                                <action selector="recordButtonPressed" destination="AgC-eL-Hgc" id="WoA-dD-972"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="Settings..." id="jvK-Hq-caI">
+                            <connections>
+                                <segue destination="Vc6-ls-qyI" kind="push" identifier="settingsSegue" id="UOB-tW-ler"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="logButton" destination="E8g-zu-bzW" id="sJH-vH-3wN"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--Settings Controller-->
+        <scene sceneID="IBm-sq-sUN">
+            <objects>
+                <controller id="Vc6-ls-qyI" customClass="SettingsController" customModule="dataLogger_WatchKit_Extension">
+                    <items>
+                        <label alignment="center" text="Sampling Rate:" id="a5r-Nm-E6m">
+                            <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                        </label>
+                        <picker height="45" alignment="left" focusStyle="stack" indicatorMode="shownWhileFocused" id="SzT-qI-Ntg">
+                            <connections>
+                                <action selector="PickerChanged:" destination="Vc6-ls-qyI" id="hrB-bP-8e6"/>
+                            </connections>
+                        </picker>
+                        <button width="1" alignment="left" title="Save Settings" id="Max-n6-KwE">
+                            <connections>
+                                <action selector="DoneButtonPressed:" destination="Vc6-ls-qyI" id="5Qz-ye-yt0"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="picker" destination="SzT-qI-Ntg" id="jy6-TI-zn1"/>
+                        <outlet property="sampRateLabel" destination="a5r-Nm-E6m" id="W4o-w3-d1N"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="497" y="338"/>
+        </scene>
+    </scenes>
+</document>
