@@ -112,6 +112,7 @@
 		E511673627D6A003002B017D /* FileUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtils.swift; sourceTree = "<group>"; };
 		E511673927DC0AA7002B017D /* CKUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKUtils.swift; sourceTree = "<group>"; };
 		E511673B27DC0BBD002B017D /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		E5D04BEB2825926B0072C1E0 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +213,7 @@
 		E511673127CD6770002B017D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E5D04BEB2825926B0072C1E0 /* CloudKit.framework */,
 				1F2C14D128188A7800CCE72D /* CloudKit.framework */,
 				1FA7D12927EB8EEF001DA0DA /* HealthKit.framework */,
 				E511673227CD6770002B017D /* CloudKit.framework */,

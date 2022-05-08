@@ -6,7 +6,7 @@
 //
 import Logging
 import CloudKit
-import UIKit
+
 
 let log = Logger(label: "")
 
@@ -68,26 +68,28 @@ class RecordIDProvider: NSObject {
 
 // Send request to fetch the user iCloud identifer and return as string
 // Waits for closure to finish to return the user ID
-func requestUserID() -> String {
+func requestUserID() -> (String, CKRecord.ID) {
     var userID = String()
+    var record = CKRecord.ID()
     let semaphore = DispatchSemaphore(value: 0)
 
     RecordIDProvider.getUserRecordID() { response in
-        semaphore.signal()
         switch response {
-        case .success(let record):
-            userID = record.recordName
+        case .success(let recordID):
+            userID = recordID.recordName
+            record = recordID
             log.info("User ID found: \(record.recordName)")
         case .failure(let error):
             log.error("error requesting userID: \(error)")
         case .unavailable(let status):
             log.error("Account unavailable: \(status)")
         }
+        semaphore.signal()
     }
     
     // Wait for closure to finish so userID is set
     semaphore.wait()
-    return userID
+    return (userID, record)
 }
     
 // Retrieve current date as string
