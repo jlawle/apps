@@ -51,7 +51,7 @@ class ViewController: NSViewController {
        //writeFile()
         
         log.info("Printing retrieved records ...")
-        print(records)
+        //print(records)
         for record in records {
             let filename = record["Filename"]
             print(filename ?? "nil")

@@ -6,6 +6,10 @@
 //
 
 import Foundation
+import CloudKit
+import Logging
+
+let log = Logger(label: "")
 
 enum Config {
     // Set the iCloud container identifier here - where it is uploaded to in cloudkit console
@@ -18,3 +22,5 @@ enum Config {
     // Auto-deletes file after uploading to cloudkit
     static let CSVFilename = "sensordata.csv"
 }
+
+
