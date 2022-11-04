@@ -80,7 +80,9 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
                     // Initialize reference to builder object from our workout session
                     self.builder = self.WKsession?.associatedWorkoutBuilder()
                 } catch {
-                    fatalError("Unable to create workout session!")
+                    print(error)
+                    self.WKsession = nil
+                    return
                 }
 
             
@@ -96,7 +98,9 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
                 self.WKsession?.startActivity(with: Date())
                 self.builder?.beginCollection(withStart: Date()) { (success, error) in
                     guard success else {
-                        fatalError("Unable to begin builder collection of data: \(String(describing: error))")
+                        print("Unable to begin builder collection of data: \(String(describing: error))")
+                        return
+                        //fatalError("Unable to begin builder collection of data: \(String(describing: error))")
                     }
                     
                     // Indicate workout session has begun
@@ -122,7 +126,9 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
         builder!.endCollection(withEnd: Date()) { (success, error) in
             guard success else {
                 // Handle errors
-                fatalError("Unable to end builder data collection: \(String(describing: error))")
+                print("Unable to end builder data collection: \(String(describing: error))")
+                return
+                //fatalError("Unable to end builder data collection: \(String(describing: error))")
             }
             
             // Let builder know to finish workout session

@@ -24,11 +24,12 @@ class CKModel {
     init() {
         // Get icloud  container and database reference
         self.container = CKContainer(identifier: Config.containerIdentifier)
-        self.database = container.publicCloudDatabase
+        self.database = container.privateCloudDatabase
         
         // Check account status
         checkStatus()
     }
+    
     
     // Verify account status is good
     private func checkStatus() {
@@ -58,6 +59,7 @@ class CKModel {
         log.info("Getting records ... ")
         var recordlist: [CKRecord] = []
         let semaphore = DispatchSemaphore(value: 0)
+        
 
         // Fetch records with completion handler
         sendQueryOperation() { response in
@@ -65,7 +67,7 @@ class CKModel {
             case .success(let records):
                 log.info("Successfully retrieved records")
                 recordlist = records
-
+                
             case .failure(let errString):
                 log.error("error retrieving records: \(errString)")
             }

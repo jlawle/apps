@@ -21,7 +21,7 @@ class CKUtils {
         self.container = CKContainer(identifier: Config.containerIdentifier)
         
         // Set up database to point to public
-        self.database = container.publicCloudDatabase
+        self.database = container.privateCloudDatabase
     }
     
     
