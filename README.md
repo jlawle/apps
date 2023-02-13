@@ -7,6 +7,8 @@ exported to a macOS app for viewing via cloudKit. The watch app will track x,y,z
 acceleration, gyroscope motion, and user-driven timestamps.
 </p>
 
+Check out the watchOS app <a href="https://apps.apple.com/us/app/wrist-motion-tracker/id1621969190">here!</a>
+
 ## Features
 - Record motion data in background on independent watchOS app
 - GUI to record user-entered timestamp of eating events (button)
