@@ -1,4 +1,4 @@
-# BiteTracker - SimpleDataCollector
+# Wrist Motion Tracker and Data Collector
 <p>
 A group of watchOS and macOS apps to collect motion data and record instances
 of eating and drinking throughout the day. SimpleDataCollector is an independent
@@ -34,27 +34,48 @@ BiteTracker uses mostly apple technologies to record, export, and import data.
 5. Interface: Storyboard
 6. Language: Objective-C (or Swift)
 
-## Compilation/ Simulation
-To build project:
-- Product -> Build For -> Testing
-- Shortcut: shift + ⌘ + U
-
-To build & run:
-- Product -> Build For -> Running
-- Shortcut: shift + ⌘ + R
-- Or click the arrow on the top bar, far left
-
-To select Simulator or Device:
-- Go to top bar, next to "[ProductName] WatchKit App", select the simulator symbol
-- if you want to run on a physical device: select from top "devices" section
-- if you want to simulate, scroll down to "IOS simulators" section, choose
-
-End run/simulation by clicking "stop" square button on the top bar, far left
-
-> NOTE: no need to select target for build on idenpendent watchOS app
-> it will automatically build for the watch app target.
-
-## App Hierarchy:
+## Compilation/ Simulation
+
+To build project:
+
+- Product -> Build For -> Testing
+
+- Shortcut: shift + ⌘ + U
+
+
+
+To build & run:
+
+- Product -> Build For -> Running
+
+- Shortcut: shift + ⌘ + R
+
+- Or click the arrow on the top bar, far left
+
+
+
+To select Simulator or Device:
+
+- Go to top bar, next to "[ProductName] WatchKit App", select the simulator symbol
+
+- if you want to run on a physical device: select from top "devices" section
+
+- if you want to simulate, scroll down to "IOS simulators" section, choose
+
+
+
+End run/simulation by clicking "stop" square button on the top bar, far left
+
+
+
+> NOTE: no need to select target for build on idenpendent watchOS app
+
+> it will automatically build for the watch app target.
+
+
+
+## App Hierarchy:
+
 Workspace: Data Logger
 - Project: watchLog
   * Target: watchLog WatchKit App
@@ -63,11 +84,16 @@ Workspace: Data Logger
 - Project: dataFetch
   * Target: TBD
 
-## Dataflow Options:
-- *Independent watchOS app -> cloudKit server -> macOS app
-- watchOS app -> companion IOS app -> dropBox Server -> macOS app
-- watchOS app -> companion IOS app -> download container to computer -> macOS app
-
+## Dataflow Options:
+
+- *Independent watchOS app -> cloudKit server -> macOS app
+
+- watchOS app -> companion IOS app -> dropBox Server -> macOS app
+
+- watchOS app -> companion IOS app -> download container to computer -> macOS app
+
+
+
 *** We are currently proceeding with this dataflow path
  Second and third dataflow options have a companion app, which would require watchkit connectivity to send data between apps. The second option would require user to download container, which is too complicated on the user side. Third option would require API calls to dropbox. First option provides the simpliest path from watch to macOS app with only CloudKit capabilities needed.
 
@@ -103,47 +129,77 @@ Shared:
 - Data Container holds data for app and user
 - app can request access to additional containers (iCloud) during runtime
 - apps are typically prohibited from creating/accessing files outside container directories
-
-## CloudKit Research
-- Access to CloudKit data based on Apple ID, do not need in-app sign in
-- Uses URLSession, makes request over Wifi or cellular connection
-- [CloudKit Console] to accesss cloud container
+
+
+## CloudKit Research
+
+- Access to CloudKit data based on Apple ID, do not need in-app sign in
+
+- Uses URLSession, makes request over Wifi or cellular connection
+
+- [CloudKit Console] to accesss cloud container
+
 - [CloudKit Development] (container structure, environments, permissions, connectivity etc.)
 - [iCloud File Management] storing/searching/moving documents in iCloud, responsible use
-
-## Adding  CLoudKit Capabilities
-- In XCode Project Navigator, select project and project target
-- "Signing and Capabilities", click "Automatically manage signing"
-- Click "+ Capability" -> "iCloud", verify it shows in capabilities page
+
+
+## Adding  CLoudKit Capabilities
+
+- In XCode Project Navigator, select project and project target
+
+- "Signing and Capabilities", click "Automatically manage signing"
+
+- Click "+ Capability" -> "iCloud", verify it shows in capabilities page
+
 
 ### iCloud Document Storage Process   
 1. app must request entitlements to access iCloud container directory [requesting access]
 2. apps use iCloud storage APIs to configure/access iCloud directories and manage files
 3. apps must use [file coordination] to read/write contents of file
-
-## Important Resources
- Videos, Apple Developer Documentation, and other resources we referenced
- frequently while creating this project.
- - [File System Programming Guide] | Apple Developers
- - [Intro to NSFileManager] | Ray Wenderlich
- - [CloudKit Development] | Apple Developers
+
+
+## Important Resources
+
+ Videos, Apple Developer Documentation, and other resources we referenced
+
+ frequently while creating this project.
+
+ - [File System Programming Guide] | Apple Developers
+
+ - [Intro to NSFileManager] | Ray Wenderlich
+
+ - [CloudKit Development] | Apple Developers
+
  - [iCloud Design Guide] | Apple Developers
  - [WatchKit Framework] | Apple Developers
-
-
-
-[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen.)
-
-[Dr. Adam Hoover]: <http://cecas.clemson.edu/~ahoover/>
-[File System Programming Guide]: <https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010672-CH1-SW1>
-[Intro to NSFileManager]: <https://www.youtube.com/watch?v=eC7_cddT6wM>
-[CLoudKit Development]: <https://developer.apple.com/icloud/cloudkit/designing/>
-[CloudKit Console]: <https://icloud.developer.apple.com/>
+
+
+
+
+
+
+[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen.)
+
+
+
+[Dr. Adam Hoover]: <http://cecas.clemson.edu/~ahoover/>
+
+[File System Programming Guide]: <https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010672-CH1-SW1>
+
+[Intro to NSFileManager]: <https://www.youtube.com/watch?v=eC7_cddT6wM>
+
+[CLoudKit Development]: <https://developer.apple.com/icloud/cloudkit/designing/>
+
+[CloudKit Console]: <https://icloud.developer.apple.com/>
+
 [iCloud Design Guide]: <https://developer.apple.com/library/archive/documentation/General/Conceptual/iCloudDesignGuide/Chapters/DesigningForDocumentsIniCloud.html#//apple_ref/doc/uid/TP40012094-CH2>
 [iCloud File Management]: <https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/iCloud/iCloud.html#//apple_ref/doc/uid/TP40010672-CH12-SW1>
 [WatchKit Framework]: <https://developer.apple.com/documentation/watchkit>
 [requesting access]: <https://developer.apple.com/library/archive/documentation/General/Conceptual/iCloudDesignGuide/Chapters/iCloudFundametals.html#//apple_ref/doc/uid/TP40012094-CH6-SW13>
 [file coordination]: <https://developer.apple.com/library/archive/documentation/General/Conceptual/iCloudDesignGuide/Chapters/DesigningForDocumentsIniCloud.html#//apple_ref/doc/uid/TP40012094-CH2-SW17>
-
-
-
+
+
+
+
+
+
