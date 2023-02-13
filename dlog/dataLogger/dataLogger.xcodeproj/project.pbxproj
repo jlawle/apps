@@ -10,8 +10,7 @@
 		1F2C14D02818740900CCE72D /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2C14CF2818740500CCE72D /* SettingsController.swift */; };
 		1FA7D12A27EB8EEF001DA0DA /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA7D12927EB8EEF001DA0DA /* HealthKit.framework */; };
 		1FC265A027EA2A7D0015D212 /* CMUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC2659F27EA2A7D0015D212 /* CMUtils.swift */; };
-		E50432FB27F7B6A3008973E4 /* dataLogger WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E51166F627CD670E002B017D /* dataLogger WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E51166E927CD670B002B017D /* dataLogger WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E51166E827CD670B002B017D /* dataLogger WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E51166E927CD670B002B017D /* Wrist Motion Tracker.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E51166E827CD670B002B017D /* Wrist Motion Tracker.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E51166EF27CD670B002B017D /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E51166ED27CD670B002B017D /* Interface.storyboard */; };
 		E51166F127CD670D002B017D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E51166F027CD670D002B017D /* Assets.xcassets */; };
 		E51166FC27CD670E002B017D /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51166FB27CD670E002B017D /* InterfaceController.swift */; };
@@ -27,6 +26,7 @@
 		E511673A27DC0AA7002B017D /* CKUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E511673927DC0AA7002B017D /* CKUtils.swift */; };
 		E511673C27DC0BBD002B017D /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E511673B27DC0BBD002B017D /* Config.swift */; };
 		E54ECCAF280F16B200C1E556 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = E54ECCAE280F16B200C1E556 /* Logging */; };
+		E56B2E432919CBBF006422E3 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = E5FEC6132919C80600E2F177 /* Logging */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,21 +37,14 @@
 			remoteGlobalIDString = E51166E727CD670B002B017D;
 			remoteInfo = "dataLogger WatchKit App";
 		};
-		E51166F827CD670E002B017D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E51166DE27CD670B002B017D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E51166F527CD670E002B017D;
-			remoteInfo = "dataLogger WatchKit Extension";
-		};
-		E511670C27CD670F002B017D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E51166DE27CD670B002B017D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E51166F527CD670E002B017D;
-			remoteInfo = "dataLogger WatchKit Extension";
-		};
 		E511671627CD670F002B017D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E51166DE27CD670B002B017D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E51166E727CD670B002B017D;
+			remoteInfo = "dataLogger WatchKit App";
+		};
+		E5FEC6152919C80700E2F177 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E51166DE27CD670B002B017D /* Project object */;
 			proxyType = 1;
@@ -61,24 +54,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E511672227CD670F002B017D /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 12;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				E50432FB27F7B6A3008973E4 /* dataLogger WatchKit Extension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E511672627CD670F002B017D /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				E51166E927CD670B002B017D /* dataLogger WatchKit App.app in Embed Watch Content */,
+				E51166E927CD670B002B017D /* Wrist Motion Tracker.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,10 +73,9 @@
 		1FA7D12927EB8EEF001DA0DA /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.5.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
 		1FC2659F27EA2A7D0015D212 /* CMUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMUtils.swift; sourceTree = "<group>"; };
 		E51166E427CD670B002B017D /* dataLogger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dataLogger.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E51166E827CD670B002B017D /* dataLogger WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dataLogger WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E51166E827CD670B002B017D /* Wrist Motion Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wrist Motion Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E51166EE27CD670B002B017D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		E51166F027CD670D002B017D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E51166F627CD670E002B017D /* dataLogger WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "dataLogger WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E51166FB27CD670E002B017D /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		E51166FD27CD670E002B017D /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		E51166FF27CD670E002B017D /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
@@ -113,6 +94,7 @@
 		E511673927DC0AA7002B017D /* CKUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKUtils.swift; sourceTree = "<group>"; };
 		E511673B27DC0BBD002B017D /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		E5D04BEB2825926B0072C1E0 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
+		E5FEC6142919C80700E2F177 /* dataLogger-WatchKit-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "dataLogger-WatchKit-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E56B2E432919CBBF006422E3 /* Logging in Frameworks */,
 				E54ECCAF280F16B200C1E556 /* Logging in Frameworks */,
 				E511673327CD6770002B017D /* CloudKit.framework in Frameworks */,
 				1FA7D12A27EB8EEF001DA0DA /* HealthKit.framework in Frameworks */,
@@ -160,8 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				E51166E427CD670B002B017D /* dataLogger.app */,
-				E51166E827CD670B002B017D /* dataLogger WatchKit App.app */,
-				E51166F627CD670E002B017D /* dataLogger WatchKit Extension.appex */,
+				E51166E827CD670B002B017D /* Wrist Motion Tracker.app */,
 				E511670B27CD670F002B017D /* dataLoggerTests.xctest */,
 				E511671527CD670F002B017D /* dataLoggerUITests.xctest */,
 			);
@@ -171,6 +153,7 @@
 		E51166EC27CD670B002B017D /* dataLogger WatchKit App */ = {
 			isa = PBXGroup;
 			children = (
+				E5FEC6142919C80700E2F177 /* dataLogger-WatchKit-App-Info.plist */,
 				E51166ED27CD670B002B017D /* Interface.storyboard */,
 				E51166F027CD670D002B017D /* Assets.xcassets */,
 			);
@@ -261,37 +244,20 @@
 			buildConfigurationList = E511672327CD670F002B017D /* Build configuration list for PBXNativeTarget "dataLogger WatchKit App" */;
 			buildPhases = (
 				E51166E627CD670B002B017D /* Resources */,
-				E511672227CD670F002B017D /* Embed App Extensions */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E51166F927CD670E002B017D /* PBXTargetDependency */,
-			);
-			name = "dataLogger WatchKit App";
-			productName = "dataLogger WatchKit App";
-			productReference = E51166E827CD670B002B017D /* dataLogger WatchKit App.app */;
-			productType = "com.apple.product-type.application.watchapp2";
-		};
-		E51166F527CD670E002B017D /* dataLogger WatchKit Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E511671F27CD670F002B017D /* Build configuration list for PBXNativeTarget "dataLogger WatchKit Extension" */;
-			buildPhases = (
 				E51166F227CD670E002B017D /* Sources */,
 				E51166F327CD670E002B017D /* Frameworks */,
-				E51166F427CD670E002B017D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "dataLogger WatchKit Extension";
+			name = "dataLogger WatchKit App";
 			packageProductDependencies = (
-				E54ECCAE280F16B200C1E556 /* Logging */,
+				E5FEC6132919C80600E2F177 /* Logging */,
 			);
-			productName = "dataLogger WatchKit Extension";
-			productReference = E51166F627CD670E002B017D /* dataLogger WatchKit Extension.appex */;
-			productType = "com.apple.product-type.watchkit2-extension";
+			productName = "dataLogger WatchKit App";
+			productReference = E51166E827CD670B002B017D /* Wrist Motion Tracker.app */;
+			productType = "com.apple.product-type.application";
 		};
 		E511670A27CD670F002B017D /* dataLoggerTests */ = {
 			isa = PBXNativeTarget;
@@ -304,7 +270,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				E511670D27CD670F002B017D /* PBXTargetDependency */,
+				E5FEC6162919C80700E2F177 /* PBXTargetDependency */,
 			);
 			name = dataLoggerTests;
 			productName = dataLoggerTests;
@@ -337,7 +303,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1400;
 				TargetAttributes = {
 					E51166E327CD670B002B017D = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -347,12 +313,9 @@
 						CreatedOnToolsVersion = 13.2.1;
 						LastSwiftMigration = 1320;
 					};
-					E51166F527CD670E002B017D = {
-						CreatedOnToolsVersion = 13.2.1;
-					};
 					E511670A27CD670F002B017D = {
 						CreatedOnToolsVersion = 13.2.1;
-						TestTargetID = E51166F527CD670E002B017D;
+						TestTargetID = E51166E727CD670B002B017D;
 					};
 					E511671427CD670F002B017D = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -379,7 +342,6 @@
 			targets = (
 				E51166E327CD670B002B017D /* dataLogger */,
 				E51166E727CD670B002B017D /* dataLogger WatchKit App */,
-				E51166F527CD670E002B017D /* dataLogger WatchKit Extension */,
 				E511670A27CD670F002B017D /* dataLoggerTests */,
 				E511671427CD670F002B017D /* dataLoggerUITests */,
 			);
@@ -399,15 +361,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E51166F127CD670D002B017D /* Assets.xcassets in Resources */,
-				E51166EF27CD670B002B017D /* Interface.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E51166F427CD670E002B017D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 				E511670427CD670F002B017D /* Assets.xcassets in Resources */,
+				E51166EF27CD670B002B017D /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,20 +424,15 @@
 			target = E51166E727CD670B002B017D /* dataLogger WatchKit App */;
 			targetProxy = E51166EA27CD670B002B017D /* PBXContainerItemProxy */;
 		};
-		E51166F927CD670E002B017D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E51166F527CD670E002B017D /* dataLogger WatchKit Extension */;
-			targetProxy = E51166F827CD670E002B017D /* PBXContainerItemProxy */;
-		};
-		E511670D27CD670F002B017D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E51166F527CD670E002B017D /* dataLogger WatchKit Extension */;
-			targetProxy = E511670C27CD670F002B017D /* PBXContainerItemProxy */;
-		};
 		E511671727CD670F002B017D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E51166E727CD670B002B017D /* dataLogger WatchKit App */;
 			targetProxy = E511671627CD670F002B017D /* PBXContainerItemProxy */;
+		};
+		E5FEC6162919C80700E2F177 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E51166E727CD670B002B017D /* dataLogger WatchKit App */;
+			targetProxy = E5FEC6152919C80700E2F177 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -612,98 +562,37 @@
 			};
 			name = Release;
 		};
-		E511672027CD670F002B017D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_ENTITLEMENTS = "dataLogger WatchKit Extension/dataLogger WatchKit Extension.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = EDHRW4QH65;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "dataLogger WatchKit Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "dataLogger WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = dataLogger_WatchKit_Extension.ComplicationController;
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "update gyro and accell data";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_WKExtensionDelegateClassName = dataLogger_WatchKit_Extension.ExtensionDelegate;
-				INFOPLIST_KEY_WKWatchOnly = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Hoover.dataLogger.dataLogger.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
-			};
-			name = Debug;
-		};
-		E511672127CD670F002B017D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_ENTITLEMENTS = "dataLogger WatchKit Extension/dataLogger WatchKit Extension.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = EDHRW4QH65;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "dataLogger WatchKit Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "dataLogger WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = dataLogger_WatchKit_Extension.ComplicationController;
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "update gyro and accell data";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INFOPLIST_KEY_WKExtensionDelegateClassName = dataLogger_WatchKit_Extension.ExtensionDelegate;
-				INFOPLIST_KEY_WKWatchOnly = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Hoover.dataLogger.dataLogger.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.0;
-			};
-			name = Release;
-		};
 		E511672427CD670F002B017D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "dataLogger WatchKit Extension/dataLogger WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEVELOPMENT_TEAM = EDHRW4QH65;
 				GENERATE_INFOPLIST_FILE = YES;
-				IBSC_MODULE = dataLogger_WatchKit_Extension;
-				INFOPLIST_KEY_CFBundleDisplayName = "dataLogger WatchKit App";
+				INFOPLIST_FILE = "dataLogger-WatchKit-App-Info.plist";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = Wrist_Motion_Tracker.ComplicationController;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "share health data";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Update gryoscope and accelerometer data ";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Hoover.dataLogger.dataLogger.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Hoover.dataLogger.watchkitapp;
+				PRODUCT_NAME = "Wrist Motion Tracker";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "dataLogger WatchKit Extension/dataLogger WatchKit App-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -716,27 +605,32 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "dataLogger WatchKit Extension/dataLogger WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEVELOPMENT_TEAM = EDHRW4QH65;
 				GENERATE_INFOPLIST_FILE = YES;
-				IBSC_MODULE = dataLogger_WatchKit_Extension;
-				INFOPLIST_KEY_CFBundleDisplayName = "dataLogger WatchKit App";
+				INFOPLIST_FILE = "dataLogger-WatchKit-App-Info.plist";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = Wrist_Motion_Tracker.ComplicationController;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "share health data";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Update gryoscope and accelerometer data ";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Hoover.dataLogger.dataLogger.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Hoover.dataLogger.watchkitapp;
+				PRODUCT_NAME = "Wrist Motion Tracker";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "dataLogger WatchKit Extension/dataLogger WatchKit App-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 7.0;
@@ -748,17 +642,17 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEVELOPMENT_TEAM = EDHRW4QH65;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Hoover.dataLogger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "dataLogger WatchKit Extension/dataLogger-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -769,17 +663,17 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEVELOPMENT_TEAM = EDHRW4QH65;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Hoover.dataLogger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "dataLogger WatchKit Extension/dataLogger-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -800,7 +694,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dataLogger WatchKit Extension.appex/dataLogger WatchKit Extension";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wrist Motion Tracker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Wrist Motion Tracker";
 				WATCHOS_DEPLOYMENT_TARGET = 8.3;
 			};
 			name = Debug;
@@ -821,7 +715,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/dataLogger WatchKit Extension.appex/dataLogger WatchKit Extension";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wrist Motion Tracker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Wrist Motion Tracker";
 				WATCHOS_DEPLOYMENT_TARGET = 8.3;
 			};
 			name = Release;
@@ -872,15 +766,6 @@
 			buildConfigurations = (
 				E511671D27CD670F002B017D /* Debug */,
 				E511671E27CD670F002B017D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E511671F27CD670F002B017D /* Build configuration list for PBXNativeTarget "dataLogger WatchKit Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E511672027CD670F002B017D /* Debug */,
-				E511672127CD670F002B017D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -954,6 +839,11 @@
 			productName = Logging;
 		};
 		E5C61DF6280E465300CA6F40 /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5C61DF5280E465300CA6F40 /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
+		};
+		E5FEC6132919C80600E2F177 /* Logging */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E5C61DF5280E465300CA6F40 /* XCRemoteSwiftPackageReference "swift-log" */;
 			productName = Logging;

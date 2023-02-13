@@ -163,9 +163,11 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
 
         // Set sampling rate
         let interval = 1/Double(samplingRate)
+        print("Interval is: ", interval)
         
         manager.deviceMotionUpdateInterval = interval
         
+        print("Deevice motion interval:", manager.deviceMotionUpdateInterval)
         // Continually gets motion data and updates CSV file
         manager.startDeviceMotionUpdates(to: queue){ (data,err) in
             if err != nil {
@@ -186,6 +188,8 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
                 self.fileUtils.updtateCSV(filename: filename, withInfo: sortedData)
             }
         }
+        
+        print("Device motion interval:", manager.deviceMotionUpdateInterval)
         
     }
     

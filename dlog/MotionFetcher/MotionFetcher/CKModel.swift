@@ -95,13 +95,6 @@ class CKModel {
 
         queryOperation.recordMatchedBlock = { recordID, result in
             if let record = try? result.get() as CKRecord {
-//                print("querying")
-//                var motionList = MotionRecord(recordID: record.recordID)
-//                motionList.recordID = record.recordID
-//                motionList.Filename = record["Filename"] as? String ?? ""
-//                motionList.Time = record["Time"] as? String ?? ""
-//
-//                fetched.append(motionList)
                 fetchedRecordIDs.append(recordID)
                 records.append(record)
             }
@@ -111,36 +104,8 @@ class CKModel {
         queryOperation.queryResultBlock = { result in
           switch result {
           case .success:
-            // TODO: Yay, the operation was successful, now do something. Perhaps reload your awesome UI.
-              //completionHandler(.success(fetchedNames))
-//              for recordID in fetchedRecordIDs {
-//                  print("name: \(recordID.recordName) recoxsrd: \(recordID)")
-//              }
-              for record in records {
-                  //print("\(record.recordID.recordName)")
-//                  let file = record["File"] as? CKAsset
-//                  guard let fileData = NSData(contentsOf: file!.fileURL!) else {
-//                  print("Invalid file!")
-//                  continue
-//                  }
-//
-//                  print("FileURL: \((file?.fileURL)!)")
-//                  print("fileData: \(fileData)")
-//                  let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-//                  let fileURL = dir.appendingPathComponent(record["Filename"] as? String ?? "fail.csv")
-//
-//                  do {
-//                      try fileData.write(to:fileURL, atomically: false)
-//                  } catch {
-//                      print("Erorr: \(error)")
-//                  }
-
-
-              }
-
               completion(.success(records: records))
               break
-
           case .failure:
               log.info("queryOperation:queryResultBlock - result failure = \(result)")
               completion(.failure(errorString: "Error querying result block"))
@@ -150,7 +115,6 @@ class CKModel {
         }
 
         database.add(queryOperation)
-        //completion(.success(records: records))
     }
 }
 

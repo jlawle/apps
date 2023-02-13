@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="20037" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="21225" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38"/>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="20006"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="21040"/>
     </dependencies>
     <scenes>
         <!--mainController-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller identifier="mainController" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="dataLogger_WatchKit_App" customModuleProvider="target">
+                <controller identifier="mainController" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Wrist_Motion_Tracker" customModuleProvider="target">
                     <items>
                         <button width="1" alignment="center" verticalAlignment="center" title="START LOG" id="E8g-zu-bzW" userLabel="logButton">
                             <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -35,7 +34,7 @@
         <!--Settings Controller-->
         <scene sceneID="IBm-sq-sUN">
             <objects>
-                <controller id="Vc6-ls-qyI" customClass="SettingsController" customModule="dataLogger_WatchKit_Extension">
+                <controller id="Vc6-ls-qyI" customClass="SettingsController" customModule="Wrist_Motion_Tracker" customModuleProvider="target">
                     <items>
                         <label alignment="center" text="Sampling Rate:" id="a5r-Nm-E6m">
                             <fontDescription key="font" style="UICTFontTextStyleBody"/>

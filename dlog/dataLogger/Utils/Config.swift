@@ -107,7 +107,7 @@ func getTime(ms: Bool) -> String {
     // Format "HH" indicates 24-hour, "hh" 12-hour, "SSSS" for ms
     let formatter = DateFormatter()
     if ms {
-        formatter.dateFormat = "HH:mm:ss.SSSS"
+        formatter.dateFormat = "HH:mm:ss.SSS"
     } else {
         formatter.dateFormat = "HH-mm-ss"
     }
