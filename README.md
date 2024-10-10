@@ -16,13 +16,6 @@ Check out the watchOS app <a href="https://apps.apple.com/us/app/wrist-motion-tr
 - Create macOS app to gather and sort data from cloud
 
 
-## Technology
-BiteTracker uses mostly apple technologies to record, export, and import data.
-- Xcode Version 13.2.1 - Text-editor, compiler, and simulator.
-- cloudKit - container to hold data
-- Objective-C - primary programming language
-- Swift - secondary programming language
-- GitHub - repository for collaboration
 
 ## Creating Independent watchOS app in Xcode
 1. open Xcode
