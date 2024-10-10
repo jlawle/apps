@@ -15,10 +15,6 @@ Check out the watchOS app <a href="https://apps.apple.com/us/app/wrist-motion-tr
 - Export motion and time data to cloud (possibly implement another button)
 - Create macOS app to gather and sort data from cloud
 
-> This is a Clemson ECE research project led by [Dr. Adam Hoover] as part of his
-> Eating Detection research.
-> Coded by John Lawler (Graduate CpE) and Cameron Burroughs (Undergraduate Cpe).
-> More information can be found here: http://cecas.clemson.edu/~ahoover/eat-detect/
 
 ## Technology
 BiteTracker uses mostly apple technologies to record, export, and import data.
