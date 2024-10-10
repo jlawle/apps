@@ -12,8 +12,8 @@
 	<true/>
 	<key>com.apple.developer.icloud-container-identifiers</key>
 	<array>
-		<string>iCloud.com.Hoover.watchLog.watchkitapp.watchkitextension</string>
 		<string>iCloud.com.Hoover.watchLog</string>
+		<string>iCloud.com.Hoover.watchLog.watchkitapp.watchkitextension</string>
 	</array>
 	<key>com.apple.developer.icloud-services</key>
 	<array>

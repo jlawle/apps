@@ -14,10 +14,6 @@
 	</dict>
 	<key>UIBackgroundModes</key>
 	<array/>
-	<key>NSHealthShareUsageDescription</key>
-	<string>share health data</string>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>Update gryoscope and accelerometer data </string>
 	<key>WKBackgroundModes</key>
 	<array>
 		<string>workout-processing</string>

@@ -21,7 +21,7 @@ class CKUtils {
         self.container = CKContainer(identifier: Config.containerIdentifier)
         
         // Set up database to point to public
-        self.database = container.publicCloudDatabase
+        self.database = container.privateCloudDatabase
     }
     
     
@@ -40,9 +40,9 @@ class CKUtils {
         let currentDate = getDate()
         
         // Retrieve unique user ICloud ID
-        let userID = requestUserID()
+        let recordData = requestUserID()
         // Format filename as DATE_TIME_USERID.csv
-        return currentDate + "_" + time + userID + ".csv"
+        return currentDate + "_" + time + recordData.0 + ".csv"
     }
     
     

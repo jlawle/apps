@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:MotionFetcher/MotionFetcher.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:dataLogger/dataLogger.xcodeproj">
    </FileRef>
 </Workspace>

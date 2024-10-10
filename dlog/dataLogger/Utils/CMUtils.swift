@@ -80,7 +80,9 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
                     // Initialize reference to builder object from our workout session
                     self.builder = self.WKsession?.associatedWorkoutBuilder()
                 } catch {
-                    fatalError("Unable to create workout session!")
+                    print(error)
+                    self.WKsession = nil
+                    return
                 }
 
             
@@ -96,7 +98,9 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
                 self.WKsession?.startActivity(with: Date())
                 self.builder?.beginCollection(withStart: Date()) { (success, error) in
                     guard success else {
-                        fatalError("Unable to begin builder collection of data: \(String(describing: error))")
+                        print("Unable to begin builder collection of data: \(String(describing: error))")
+                        return
+                        //fatalError("Unable to begin builder collection of data: \(String(describing: error))")
                     }
                     
                     // Indicate workout session has begun
@@ -122,7 +126,9 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
         builder!.endCollection(withEnd: Date()) { (success, error) in
             guard success else {
                 // Handle errors
-                fatalError("Unable to end builder data collection: \(String(describing: error))")
+                print("Unable to end builder data collection: \(String(describing: error))")
+                return
+                //fatalError("Unable to end builder data collection: \(String(describing: error))")
             }
             
             // Let builder know to finish workout session
@@ -157,9 +163,11 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
 
         // Set sampling rate
         let interval = 1/Double(samplingRate)
+        print("Interval is: ", interval)
         
         manager.deviceMotionUpdateInterval = interval
         
+        print("Deevice motion interval:", manager.deviceMotionUpdateInterval)
         // Continually gets motion data and updates CSV file
         manager.startDeviceMotionUpdates(to: queue){ (data,err) in
             if err != nil {
@@ -180,6 +188,8 @@ class CMUtils: NSObject, HKWorkoutSessionDelegate, HKLiveWorkoutBuilderDelegate 
                 self.fileUtils.updtateCSV(filename: filename, withInfo: sortedData)
             }
         }
+        
+        print("Device motion interval:", manager.deviceMotionUpdateInterval)
         
     }
     
